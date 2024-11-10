@@ -1,0 +1,31 @@
+/* 全体のスタイルリセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* 背景色 */
+    background-color: #000000;
+}
+
+.main-content {
+    /* 残りのスペースを占める */
+    flex: 1;
+}
+
+.footer {
+    /* 要素の下端 */
+    bottom: 0;
+}

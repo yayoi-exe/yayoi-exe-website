@@ -1,0 +1,57 @@
+.header {
+    /* 背景色 */
+    background-color: #000000;
+    /* 文字の色 */
+    color: #FFFFFF;
+    /* 要素内の余白 */
+    padding: 0.5rem;
+    /* 要素外の余白 */
+    margin: 0;
+    /* 要素の幅 */
+    width: 100%;
+    /* レイアウトの設定 */
+    display: flex;
+    /* 水平方向の配置 */
+    justify-content: space-between;
+    /* 垂直方向の配置 */
+    align-items: center;
+}
+
+.title {
+    /* フォントサイズ */
+    font-size: 1.5rem;
+    /* 要素内の余白 */
+    padding: 0;
+    /* 要素外の余白 */
+    margin: 0;
+}
+
+.nav-list {
+    /* リストのスタイルをなくす */
+    list-style: none;
+    /* レイアウトの設定 */
+    display: flex;
+    /* 要素内の余白 */
+    padding: 0;
+    /* 要素外の余白 */
+    margin: 0;
+}
+
+.nav-item {
+    /* 要素外の左の余白 */
+    margin-left: 1rem;
+}
+
+.link-item {
+    /* 文字の色 */
+    color: #FFFFFF;
+    /* フォントサイズ */
+    font-size: 1rem;
+    /* テキストの装飾をなくす */
+    text-decoration: none;
+}
+
+.link-item:hover {
+    /* マウスオーバー時の文字の色 */
+    color: #DDDDDD;
+}
