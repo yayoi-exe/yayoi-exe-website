@@ -1,22 +1,42 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
+import { useFrame } from '@react-three/fiber';
 
 const Cube = () => {
     const cubeRef = useRef();
+    const [rotationSpeed, setRotationSpeed] = useState(0.01);
+    const [geometryParams, setGeometryParams] = useState([1, 1, 1]);
 
-    useEffect(() => {
+    useFrame(() => {
         if (cubeRef.current) {
-            const animate = () => {
-                requestAnimationFrame(animate);
-                cubeRef.current.rotation.x += 0.01;
-                cubeRef.current.rotation.y += 0.01;
-            };
-            animate();
+            cubeRef.current.rotation.x += rotationSpeed;
+            cubeRef.current.rotation.y += rotationSpeed;
         }
-    }, []);
+    });
+
+    const handlePointerOver = () => {
+        setRotationSpeed(0.05);
+    };
+
+    const handlePointerOut = () => {
+        setRotationSpeed(0.01);
+    };
+
+    const handleClick = () => {
+        setGeometryParams([
+            Math.random() * 2 + 0.5,
+            Math.random() * 2 + 0.5,
+            Math.random() * 2 + 0.5,
+        ]);
+    };
 
     return (
-        <mesh ref={cubeRef}>
-            <boxGeometry args={[1, 1, 1]} />
+        <mesh
+            ref={cubeRef}
+            onPointerOver={handlePointerOver}
+            onPointerOut={handlePointerOut}
+            onClick={handleClick}
+        >
+            <boxGeometry args={geometryParams} />
             <meshBasicMaterial color={0x000000} wireframe={true} />
         </mesh>
     );
