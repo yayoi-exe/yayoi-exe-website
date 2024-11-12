@@ -6,17 +6,17 @@ import Main from "./pages/Main";
 import './assets/styles/app.css';
 
 function App() {
-	return (
-		<BrowserRouter>
-			<div className='app-container'>
-				<Header />
-				<Routes>
-					<Route path="/" element={<Main />} />
-				</Routes>
-				<Footer className="footer" />
-			</div>
-		</BrowserRouter >
-	);
+    return (
+        <BrowserRouter>
+            <div className='app-container'>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                </Routes>
+                <Footer className="footer" />
+            </div>
+        </BrowserRouter >
+    );
 }
 
 export default App;
