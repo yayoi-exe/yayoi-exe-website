@@ -4,7 +4,7 @@ import '../assets/styles/header.css'
 
 const Header = () => {
     return (
-        <header className="header">
+        <header className="header krona-one-regular">
             <h1 className="title">Yayoi-exe</h1>
             <nav>
                 <ul className="nav-list">

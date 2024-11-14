@@ -6,7 +6,7 @@ const Main = () => {
     return (
         <div style={{ width: '100%', height: '100vh' }}>
             <Canvas camera={{ position: [0, 0, 5] }}>
-                <Cube />
+                <Cube redirectUrl="https://yourlink.com" />
             </Canvas>
         </div>
     );
