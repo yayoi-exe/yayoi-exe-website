@@ -1,13 +1,11 @@
 import React from 'react';
-import { Canvas } from '@react-three/fiber';
-import Cube from '../components/Cube';
+import AnimatedTitle from '../components/AnimatedTitle';
+import '../assets/styles/main.css';
 
 const Main = () => {
     return (
-        <div style={{ width: '100%', height: '100vh' }}>
-            <Canvas camera={{ position: [0, 0, 5] }}>
-                <Cube redirectUrl="https://yourlink.com" />
-            </Canvas>
+        <div className='main-container'>
+            <AnimatedTitle />
         </div>
     );
 };

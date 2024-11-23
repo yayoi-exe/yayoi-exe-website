@@ -1,10 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
-
-.krona-one-regular {
-    font-family: "Krona One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
+@charset "UTF-8";
 
 .footer {
     /* 背景色 */
@@ -25,4 +19,6 @@
     justify-content: center;
     /* 垂直方向の配置 */
     align-items: center;
+    font-weight: normal;
+    font-style: normal;
 }

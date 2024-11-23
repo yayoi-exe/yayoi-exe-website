@@ -16,7 +16,7 @@ const Cube = ({ redirectUrl = "https://example.com" }) => {
         if (exploded) {
             const timer = setTimeout(() => {
                 window.location.href = redirectUrl;
-            }, 3000); // 3 seconds delay
+            }, 1000);
 
             return () => clearTimeout(timer);
         }
@@ -24,39 +24,36 @@ const Cube = ({ redirectUrl = "https://example.com" }) => {
 
     const handlePointerMove = (event) => {
         if (!exploded && isHovering.current) {
-            const x = (event.clientX / size.width - 0.5) * 5;
-            const y = (event.clientY / size.height - 0.5) * 5;
-            // Increase rotation speed when hovering and adjust based on normalized mouse position
-            const rotationX = y * 0.3; // Increased rotation speed on hover
-            const rotationY = x * 0.3;
+            // const x = event.clientX / size.width - 0.5;
+            // const y = event.clientY / size.height - 0.5;
+            const rotationX = 0.03;
+            const rotationY = 0.03;
             setRotationSpeed({ x: rotationX, y: rotationY });
         }
     };
 
     const handlePointerOver = () => {
-        isHovering.current = true; // Set hover state to true
+        isHovering.current = true;
         window.addEventListener('pointermove', handlePointerMove);
     };
 
     const handlePointerOut = () => {
-        isHovering.current = false; // Set hover state to false
+        isHovering.current = false;
         window.removeEventListener('pointermove', handlePointerMove);
-        setRotationSpeed({ x: 0.01, y: 0.01 }); // Reset to slow rotation when not hovering
+        setRotationSpeed({ x: 0.01, y: 0.01 });
     };
 
     const handleClick = (event) => {
         if (!exploded) {
-            // Get the click position in world coordinates
             clickPosition.current.set(event.point.x, event.point.y, event.point.z);
 
-            // Generate fragments with a faster outward velocity relative to the click position
-            const newFragments = Array.from({ length: 20 }, () => {
+            const newFragments = Array.from({ length: 500 }, () => {
                 const direction = new Vector3(
                     Math.random() - 0.5,
                     Math.random() - 0.5,
                     Math.random() - 0.5
                 ).normalize();
-                const velocity = direction.multiplyScalar(Math.random() * 0.5 + 0.3); // Increased velocity for faster explosion
+                const velocity = direction.multiplyScalar(Math.random() * 0.5 + 0.3);
 
                 return {
                     position: clickPosition.current.clone(),
@@ -107,8 +104,8 @@ const Cube = ({ redirectUrl = "https://example.com" }) => {
                     ref={(el) => (fragmentRefs.current[index] = el)}
                     position={fragment.position}
                 >
-                    <sphereGeometry args={[0.15, 16, 16]} /> {/* Spherical geometry for fragments */}
-                    <meshBasicMaterial color={0x000000} wireframe={true} />
+                    <sphereGeometry args={[0.5, 4, 4]} />
+                    <meshBasicMaterial color={"#000000"} wireframe={true} />
                 </mesh>
             ))}
         </>

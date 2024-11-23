@@ -1,10 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
-
-.krona-one-regular {
-    font-family: "Krona One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
+@charset "UTF-8";
 
 .header {
     /* 背景色 */
@@ -12,9 +6,9 @@
     /* 文字の色 */
     color: #FFFFFF;
     /* 要素内の余白 */
-    padding: 0.5rem;
+    padding: 0.5rem 4%;
     /* 要素外の余白 */
-    margin: 0;
+    margin: 0 auto;
     /* 要素の幅 */
     width: 100%;
     /* レイアウトの設定 */
@@ -23,6 +17,10 @@
     justify-content: space-between;
     /* 垂直方向の配置 */
     align-items: center;
+    /* 線の太さ */
+    font-weight: normal;
+    /* bold などがある */
+    font-style: normal;
 }
 
 .title {
