@@ -1,13 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import CodeFrameWindow from "./CodeFrameWindow";
-import CodeContent from "./CodeContent";
+import IntroCodeContent from "./IntroCodeContent";
 
 const CodeFrame = () => {
 
     return (
-        <CodeFrameWindow title="AboutMe.js">
-            <CodeContent />
+        <CodeFrameWindow title="AboutMe.py">
+            <IntroCodeContent />
         </CodeFrameWindow>
     );
 };

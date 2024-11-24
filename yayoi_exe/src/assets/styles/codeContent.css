@@ -28,8 +28,8 @@ code {
 }
 
 .comment {
-    color: #6a737d;
-    font-size: clamp(0.7rem, 1.5vw, 1rem);
+    color: #598F4F;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
     /* 小さめの文字サイズも調整 */
 }
 
