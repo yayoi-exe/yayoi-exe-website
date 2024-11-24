@@ -1,0 +1,41 @@
+.code-content {
+    flex-grow: 1;
+    padding: 1rem 2rem;
+    background-color: #1e1e1e;
+}
+
+pre {
+    margin: 0;
+    line-height: 1.5;
+}
+
+code {
+    display: block;
+    font-family: "Fira Code", monospace;
+    color: #d4d4d4;
+    white-space: pre;
+}
+
+.comment {
+    color: #6a737d;
+}
+
+.keyword {
+    color: #569cd6;
+}
+
+.variable {
+    color: #9cdcfe;
+}
+
+.string {
+    color: #ce9178;
+}
+
+.string.body {
+    font-size: 120%;
+}
+
+.function {
+    color: #dcdcaa;
+}

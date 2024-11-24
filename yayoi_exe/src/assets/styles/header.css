@@ -1,63 +1,58 @@
-@charset "UTF-8";
-
-.header {
-    /* 背景色 */
-    background-color: #000000;
-    /* 文字の色 */
-    color: #FFFFFF;
-    /* 要素内の余白 */
-    padding: 0.5rem 4%;
-    /* 要素外の余白 */
-    margin: 0 auto;
-    /* 要素の幅 */
-    width: 100%;
-    /* レイアウトの設定 */
+.header-tabs {
     display: flex;
-    /* 水平方向の配置 */
+    background-color: #252526;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #333;
     justify-content: space-between;
-    /* 垂直方向の配置 */
     align-items: center;
-    /* 線の太さ */
-    font-weight: normal;
-    /* bold などがある */
-    font-style: normal;
 }
 
-.title {
-    /* フォントサイズ */
-    font-size: 1.5rem;
-    /* 要素内の余白 */
-    padding: 0;
-    /* 要素外の余白 */
-    margin: 0;
-}
-
-.nav-list {
-    /* リストのスタイルをなくす */
-    list-style: none;
-    /* レイアウトの設定 */
+.tab {
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    color: #d4d4d4;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-top 0.3s ease;
+    position: relative;
+    border-top: 4px solid transparent;
+    text-decoration: none;
+    width: 100px;
     display: flex;
-    /* 要素内の余白 */
-    padding: 0;
-    /* 要素外の余白 */
-    margin: 0;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.nav-item {
-    /* 要素外の左の余白 */
-    margin-left: 1rem;
+.tab-title {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #ffffff;
+}
+
+.tab.active {
+    background-color: #343434;
+    color: #ffffff;
+    border-top: 4px solid #ffb31a;
+}
+
+.tab:hover {
+    background-color: #343434;
+    color: #ffffff;
+}
+
+.nav-tabs {
+    display: flex;
 }
 
 .link-item {
-    /* 文字の色 */
-    color: #FFFFFF;
-    /* フォントサイズ */
-    font-size: 1rem;
-    /* テキストの装飾をなくす */
+    color: inherit;
     text-decoration: none;
-}
-
-.link-item:hover {
-    /* マウスオーバー時の文字の色 */
-    color: #DDDDDD;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    height: 100%;
 }

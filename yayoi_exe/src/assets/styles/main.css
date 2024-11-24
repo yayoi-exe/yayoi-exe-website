@@ -1,12 +1,24 @@
 .main-container {
-    background-color: #FFFFFF;
+    background: white;
+    background-image: radial-gradient(#e0e0e0 2px, transparent 2px);
+    background-size: 20px 20px;
     display: flex;
-    /* 縦方向に並べる */
-    flex-direction: column;
-    /* 水平方向の中央揃え */
-    align-items: center;
-    /* 垂直方向の中央揃え */
-    justify-content: center;
-    /* 画面いっぱいに表示 */
+    flex-direction: row;
     height: 100%;
+}
+
+.left-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.right-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
 }

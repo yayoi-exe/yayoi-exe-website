@@ -1,17 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../assets/styles/header.css'
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import '../assets/styles/header.css';
+
+const tabs = [
+    { path: '/', label: 'Home.js' },
+    { path: '/about', label: 'About.css' },
+];
 
 const Header = () => {
+    const location = useLocation();
+    const [activeTab, setActiveTab] = useState('');
+
+    useEffect(() => {
+        const matchedTab = tabs.find(tab => tab.path === location.pathname);
+        if (matchedTab) {
+            setActiveTab(matchedTab.path);
+        } else {
+            setActiveTab('');
+        }
+    }, [location]);
+
     return (
-        <header className="header">
-            <h1 className="title">Yayoi-exe</h1>
-            <nav>
-                <ul className="nav-list">
-                    <li className="nav-item"><Link to="/" className="link-item" draggable="false">Home</Link></li>
-                    <li className="nav-item"><Link to="/test" className="link-item" draggable="false">Test</Link></li>
-                </ul>
-            </nav>
+        <header className="header-tabs">
+            <div className="tab-title">Yayoi-exe</div>
+            <div className="nav-tabs">
+                {tabs.map((tab) => (
+                    <Link
+                        key={tab.path}
+                        to={tab.path}
+                        className={`tab ${activeTab === tab.path ? 'active' : ''}`}
+                        draggable="false"
+                        aria-current={activeTab === tab.path ? 'page' : undefined}
+                    >
+                        {tab.label}
+                    </Link>
+                ))}
+            </div>
         </header>
     );
 };

@@ -1,20 +1,26 @@
 .container {
-    color: #00D8FF;
-    text-align: center;
+    color: #FFB31A;
+    text-align: left;
+    width: 100%;
 }
 
 #animated-title {
-    font-size: 8vw;
+    font-size: 4vw;
     white-space: nowrap;
     overflow: hidden;
     box-sizing: border-box;
     transition: color 0.3s, border-color 0.3s;
+    margin: 0;
 }
 
 #animated-title:hover {
-    color: #39FF14;
+    color: #FF9500;
 }
 
 #animated-title .prefix {
     color: #000000;
+}
+
+#animated-title {
+    cursor: pointer;
 }
