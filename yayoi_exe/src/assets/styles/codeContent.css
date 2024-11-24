@@ -2,12 +2,23 @@
     flex-grow: 1;
     padding: 1rem 2rem;
     background-color: #1e1e1e;
+    max-width: 100%;
+    /* 親要素の幅を超えない */
+    overflow-x: auto;
+    /* 横スクロールを許可 */
+    box-sizing: border-box;
+    /* パディング込みでサイズ計算 */
 }
 
 pre {
     margin: 0;
     line-height: 1.5;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    /* 動的なサイズ調整 */
+    word-wrap: break-word;
+    /* 長い単語を折り返す */
 }
+
 
 code {
     display: block;
@@ -17,25 +28,32 @@ code {
 }
 
 .comment {
-    color: #6a737d;
+    color: #598F4F;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    /* 小さめの文字サイズも調整 */
 }
 
 .keyword {
     color: #569cd6;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
 }
 
 .variable {
     color: #9cdcfe;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
 }
 
 .string {
     color: #ce9178;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
 }
 
 .string.body {
-    font-size: 120%;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    /* 少し大きめのスケール */
 }
 
 .function {
     color: #dcdcaa;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
 }
