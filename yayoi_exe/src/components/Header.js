@@ -3,8 +3,11 @@ import { Link, useLocation } from 'react-router-dom';
 import '../assets/styles/header.css';
 
 const tabs = [
-    { path: '/', label: 'Home.js' },
+    { path: '/', label: 'Home.html' },
     { path: '/about', label: 'About.css' },
+    { path: '/projects', label: 'Projects.js' },
+    { path: '/skills', label: 'Skills.js' },
+    { path: '/contact', label: 'Contact.js' }
 ];
 
 const Header = () => {
