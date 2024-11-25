@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/styles/photoFrame.css";
+import "../assets/styles/codeFrameWindow.css";
 
 const CodeFrameWindow = ({ title, children, onClick }) => {
     return (
