@@ -6,7 +6,7 @@ const tabs = [
     { path: '/', label: 'Home.html' },
     { path: '/about', label: 'About.css' },
     { path: '/projects', label: 'Projects.js' },
-    { path: '/skills', label: 'Skills.js' },
+    // { path: '/skills', label: 'Skills.js' },
     { path: '/contact', label: 'Contact.js' }
 ];
 

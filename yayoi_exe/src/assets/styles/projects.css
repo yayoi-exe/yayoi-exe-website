@@ -1,0 +1,82 @@
+/* Projects.css */
+.projects-container {
+    background: white;
+    background-image: radial-gradient(#e0e0e0 2px, transparent 2px);
+    background-size: 20px 20px;
+    padding: 20px;
+    height: 100%;
+}
+
+.page-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: #1e1e1e;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.project-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.project-name {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.project-description {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.tech-badge {
+    background: #444;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    margin-right: 5px;
+}
+
+.project-links .button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    background: #007acc;
+    transition: background 0.2s;
+}
+
+.project-links .button:hover {
+    background: #005f99;
+}
+
+.project-links .button.secondary {
+    background: #555;
+}
+
+.project-links .button.secondary:hover {
+    background: #333;
+}
