@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Main from "./pages/Main";
 import About from "./pages/About";
 import './app.css';
+import Contact from './pages/Contact';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Main />} />
                         <Route path="/about" element={<About />} />
+                        <Route path="/contact" element={<Contact />} />
                     </Routes>
                 </div>
                 <Footer />

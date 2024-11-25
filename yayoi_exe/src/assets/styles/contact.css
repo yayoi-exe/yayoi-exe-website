@@ -1,0 +1,88 @@
+.contact-page {
+    background: white;
+    background-image: radial-gradient(#e0e0e0 2px, transparent 2px);
+    background-size: 20px 20px;
+    /* 背景色を黒に設定 */
+    min-height: 100%;
+    /* ページ全体の高さをカバー */
+    display: flex;
+    /* フレックスボックスを使用 */
+    justify-content: center;
+    /* 水平方向に中央揃え */
+    align-items: center;
+    /* 垂直方向に中央揃え */
+    padding: 20px;
+    /* 小さい画面用にパディングを設定 */
+}
+
+.contact-container {
+    display: flex;
+    /* 横並びにする */
+    gap: 40px;
+    /* 左側リンクと右側フォームの間に間隔を設定 */
+    align-items: flex-start;
+    /* 左上を基準に揃える */
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    /* リンクを縦並びに配置 */
+    max-width: 300px;
+    /* 最大幅を指定 */
+    font-family: "Fira Code", monospace;
+    color: #FFFFFF;
+    /* 緑色でターミナル風 */
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.terminal-command {
+    margin-bottom: 10px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.link-list {
+    font-size: 120%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.link-list li {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.link-command {
+    font-weight: bold;
+}
+
+.link-command.github {
+    color: #8e8e8e;
+}
+
+.link-command.qiita {
+    color: #57ff1a;
+}
+
+.link-command.email {
+    color: #FFB31A;
+}
+
+
+.link {
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.link:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
