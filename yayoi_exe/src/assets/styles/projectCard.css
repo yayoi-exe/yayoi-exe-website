@@ -1,0 +1,13 @@
+.project-thumbnail {
+    width: 300px;
+    /* 固定横幅 */
+    height: 200px;
+    /* 固定縦幅 */
+    object-fit: cover;
+    /* 枠全体を埋める */
+    border-radius: 8px;
+    /* 角丸 (オプション) */
+    display: block;
+    margin: 0 auto;
+    /* 中央揃え */
+}

@@ -1,20 +1,27 @@
-// projectsData.js
 const projectsData = [
     {
         id: 1,
         name: "Portfolio Website",
-        description: "A personal portfolio designed with React and Tailwind CSS.",
-        thumbnail: "/images/portfolio.png",
-        techStack: ["React", "Tailwind CSS", "JavaScript"],
-        webLink: "https://example.com/portfolio"
+        description: "A personal portfolio designed with React and CSS.",
+        thumbnail: "/images/portfolio_web.png",
+        techStack: ["React", "CSS", "JavaScript"],
+        webLink: ""
     },
     {
         id: 2,
-        name: "E-commerce Platform",
-        description: "A full-stack e-commerce application with MERN stack.",
-        thumbnail: "/images/ecommerce.png",
-        techStack: ["MongoDB", "Express", "React", "Node.js"],
-        webLink: "https://example.com/ecommerce"
+        name: "Stealth Shield -Protect your virtual privacy",
+        description: "IVRC 2024 Seed Stage!",
+        thumbnail: "/images/IVRC.png",
+        techStack: ["Unity", "C#", "Python", "Node.js"],
+        webLink: "https://criware.info/ivrc-2024-seed/"
+    },
+    {
+        id: 3,
+        name: "The Malleable-Self Experience",
+        description: "ACM SIGGRAPH 2024 Audience Choice Award 受賞！",
+        thumbnail: "/images/SIGGRAPH.png",
+        techStack: ["Unity", "C#", "Arduino"],
+        webLink: "https://www.kmd.keio.ac.jp/ja/news/2024/08/%E3%80%90awards%E3%80%91siggraph-2024-emerging-technologies-awards.html"
     },
 ];
 
