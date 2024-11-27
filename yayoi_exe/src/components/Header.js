@@ -7,7 +7,7 @@ const tabs = [
     { path: '/about', label: 'About.css' },
     { path: '/projects', label: 'Projects.js' },
     // { path: '/skills', label: 'Skills.js' },
-    { path: '/contact', label: 'Contact.js' }
+    { path: '/contact', label: 'Contact.py' }
 ];
 
 const Header = () => {
@@ -24,14 +24,14 @@ const Header = () => {
     }, [location]);
 
     return (
-        <header className="header-tabs">
+        <header className="header">
             <div className="tab-title">Yayoi-exe</div>
             <div className="nav-tabs">
                 {tabs.map((tab) => (
                     <Link
                         key={tab.path}
                         to={tab.path}
-                        className={`tab ${activeTab === tab.path ? 'active' : ''}`}
+                        className={`header-tab ${activeTab === tab.path ? 'active' : ''}`}
                         draggable="false"
                         aria-current={activeTab === tab.path ? 'page' : undefined}
                     >

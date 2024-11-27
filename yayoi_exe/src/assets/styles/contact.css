@@ -1,7 +1,4 @@
 .contact-page {
-    background: white;
-    background-image: radial-gradient(#e0e0e0 2px, transparent 2px);
-    background-size: 20px 20px;
     /* 背景色を黒に設定 */
     min-height: 100%;
     /* ページ全体の高さをカバー */

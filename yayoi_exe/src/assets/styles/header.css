@@ -1,17 +1,18 @@
-.header-tabs {
+.header {
     display: flex;
     background-color: #252526;
     padding: 0.5rem 1rem;
     border-bottom: 1px solid #333;
     justify-content: space-between;
     align-items: center;
+    color: #FFFFFF;
 }
 
-.tab {
+.header-tab {
     margin-right: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 2px;
-    color: #d4d4d4;
+    color: #B4B4B4;
     background-color: transparent;
     cursor: pointer;
     transition: background-color 0.3s ease, border-top 0.3s ease;
@@ -30,18 +31,17 @@
 .tab-title {
     font-size: 1.5rem;
     margin: 0;
-    color: #ffffff;
 }
 
-.tab.active {
+.header-tab.active {
     background-color: #343434;
-    color: #ffffff;
-    border-top: 4px solid #ffb31a;
+    color: #FFFFFF;
+    border-top: 4px solid #FFB31A;
 }
 
-.tab:hover {
+.header-tab:hover {
     background-color: #343434;
-    color: #ffffff;
+    color: #FFFFFF;
 }
 
 .nav-tabs {
