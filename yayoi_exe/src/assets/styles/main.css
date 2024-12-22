@@ -1,7 +1,4 @@
 .main-container {
-    background: white;
-    background-image: radial-gradient(#e0e0e0 2px, transparent 2px);
-    background-size: 20px 20px;
     display: flex;
     flex-direction: row;
     height: 100%;
