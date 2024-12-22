@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Main from "./pages/Main";
 import About from "./pages/About";
+
 import Contact from './pages/Contact';
 import Projects from './pages/Projects';
 import './app.css';
