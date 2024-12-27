@@ -60,7 +60,6 @@ const AnimatedTitle = () => {
             }
         });
 
-        // 表示中の静止時間（全体）
         timeline.to({}, { duration: displayDuration - symbolToTextDelay - totalDuration });
     };
 
@@ -69,10 +68,10 @@ const AnimatedTitle = () => {
         const cycleTexts = () => {
             const text = texts[index];
             animateText(text);
-            index = (index + 1) % texts.length; // 次の文字列に進む（順番にループ）
+            index = (index + 1) % texts.length;
         };
 
-        cycleTexts(); // 最初のアニメーションを開始
+        cycleTexts();
 
         const intervalId = setInterval(cycleTexts, displayDuration * 1000);
 

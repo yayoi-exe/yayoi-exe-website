@@ -1,10 +1,10 @@
 .vscode-window {
-    border: 1px solid #333;
+    border: 1px solid #333333;
     border-radius: 8px;
     width: 90%;
     max-width: 800px;
-    background-color: #1e1e1e;
-    color: #ccc;
+    background-color: #1E1E1E;
+    color: #CCCCCC;
     font-family: "Fira Code", monospace;
     margin: 20px auto;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -20,8 +20,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 8px;
-    background-color: #2d2d2d;
-    border-bottom: 1px solid #333;
+    background-color: #2D2D2D;
+    border-bottom: 1px solid #333333;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
@@ -80,33 +80,4 @@
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-}
-
-@media (max-width: 600px) {
-    .vscode-window {
-        width: 95%;
-        margin: 10px auto;
-    }
-
-    .vscode-title {
-        font-size: 1.2rem;
-    }
-
-    .photo-container {
-        width: 90%;
-        padding: 1%;
-    }
-
-    .vscode-header {
-        padding: 6px;
-    }
-
-    .vscode-buttons span {
-        width: 10px;
-        height: 10px;
-    }
-
-    .vscode-content {
-        padding: 10px;
-    }
 }
