@@ -6,10 +6,10 @@ import '../assets/styles/main.css';
 const Main = () => {
     return (
         <div className='main-container'>
-            <div className="left-container">
+            <div className="containers">
                 <AnimatedTitle />
             </div>
-            <div className="right-container">
+            <div className="containers">
                 <ImageFrame />
             </div>
         </div>

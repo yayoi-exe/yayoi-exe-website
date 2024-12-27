@@ -4,9 +4,11 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Main from "./pages/Main";
 import About from "./pages/About";
-import './app.css';
 import Contact from './pages/Contact';
 import Projects from './pages/Projects';
+import Career from './pages/Career';
+import './app.css';
+
 
 function App() {
     return (
@@ -19,6 +21,7 @@ function App() {
                         <Route path="/about" element={<About />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/projects" element={<Projects />} />
+                        <Route path="/Career" element={<Career />} />
                     </Routes>
                 </div>
                 <Footer />

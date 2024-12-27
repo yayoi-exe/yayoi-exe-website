@@ -1,16 +1,15 @@
 import React from 'react';
-
-import IntroCodeFrame from '../components/IntroCodeFrame';
 import PhotoFrame from '../components/ImageFrame';
+import IntroCodeFrame from '../components/IntroCodeFrame';
 import '../assets/styles/main.css';
 
-const About = ({ content }) => {
+const About = () => {
     return (
         <div className='main-container'>
-            <div className="left-container">
+            <div className="containers">
                 <PhotoFrame />
             </div>
-            <div className="right-container">
+            <div className="containers">
                 <IntroCodeFrame />
             </div>
         </div>

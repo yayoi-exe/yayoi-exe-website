@@ -1,15 +1,15 @@
-.projects-container {
+.career-container {
     padding: 20px;
-    height: 100%;
 }
 
 .page-title {
-    font-size: 2rem;
-    margin-bottom: 20px;
     text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
 }
 
-.projects-grid {
+.career-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;

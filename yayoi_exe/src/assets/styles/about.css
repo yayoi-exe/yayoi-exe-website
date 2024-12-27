@@ -1,23 +1,12 @@
-.about-container {
-    background: white;
-    background-image: radial-gradient(#e0e0e0 2px, transparent 2px);
-    background-size: 20px 20px;
+.main-container {
     display: flex;
     flex-direction: row;
     height: 100%;
 }
 
-.left-container {
-    flex: 1;
+.containers {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 20px;
-}
-
-.right-container {
     flex: 1;
-    display: flex;
     justify-content: center;
     align-items: center;
     padding-left: 20px;

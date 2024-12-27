@@ -5,7 +5,7 @@ const projectsData = [
         description: "A personal portfolio designed with React and CSS.",
         thumbnail: "/images/portfolio_web.png",
         techStack: ["React", "CSS", "JavaScript"],
-        webLink: ""
+        webLink: "https://github.com/yayoi-exe/yayoi-exe-website/tree/development"
     },
     {
         id: 2,
@@ -13,7 +13,7 @@ const projectsData = [
         description: "IVRC 2024 Seed Stage!",
         thumbnail: "/images/IVRC.png",
         techStack: ["Unity", "C#", "Python", "Node.js"],
-        webLink: "https://criware.info/ivrc-2024-seed/"
+        webLink: "https://conference.vrsj.org/ac2024/program/doc/IVRC-12.pdf"
     },
     {
         id: 3,
