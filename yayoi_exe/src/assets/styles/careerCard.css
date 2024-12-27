@@ -1,0 +1,92 @@
+.career-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.career-institution {
+    font-size: 1.5rem;
+    color: #007acc;
+    margin-bottom: 5px;
+}
+
+.career-department {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.career-duration {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.career-projects {
+    margin-top: 15px;
+}
+
+.project {
+    margin-bottom: 20px;
+    border-top: 1px solid #eaeaea;
+    padding-top: 15px;
+}
+
+.project-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.project-description {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.project-tech-stack h5,
+.project-pages h5,
+.project-achievements h5,
+.project-future-goals h5 {
+    font-size: 1rem;
+    color: #007acc;
+    margin-bottom: 5px;
+}
+
+.tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.tech-badge {
+    background-color: #e0f7fa;
+    color: #00796b;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 0.8rem;
+}
+
+.project-pages ul,
+.project-achievements ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.project-pages li,
+.project-achievements li {
+    margin-bottom: 5px;
+}
+
+a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

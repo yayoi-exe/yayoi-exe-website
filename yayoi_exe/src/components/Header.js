@@ -5,7 +5,8 @@ import '../assets/styles/header.css';
 const tabs = [
     { path: '/', label: 'Home.html' },
     { path: '/about', label: 'About.css' },
-    { path: '/projects', label: 'Projects.js' },
+    { path: '/career', label: 'Career.js' },
+    { path: '/projects', label: 'Projects.cs' },
     // { path: '/skills', label: 'Skills.js' },
     { path: '/contact', label: 'Contact.py' }
 ];
