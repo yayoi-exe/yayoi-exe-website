@@ -5,12 +5,23 @@
 .page-title {
     text-align: center;
     font-size: 2rem;
-    color: #333;
+    color: #333333;
     margin-bottom: 20px;
 }
 
 .career-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+}
+
+@media screen and (min-width: 767px) {
+    .career-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .career-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
 }

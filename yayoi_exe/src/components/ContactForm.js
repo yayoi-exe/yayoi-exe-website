@@ -30,17 +30,9 @@ const ContactForm = () => {
     };
 
     return (
-        <div className="terminal-container">
-            <div style={{ color: "red", fontSize: "150%" }}>It is not working</div>
-            <div className="terminal-header">
-                <div className="window-buttons">
-                    <span className="red"></span>
-                    <span className="yellow"></span>
-                    <span className="green"></span>
-                </div>
-                <span className="terminal-title">Contact Terminal</span>
-            </div>
-            <div className="terminal-body">
+        <div>
+            <div className="warning">It is not working</div>
+            <div>
                 <form className="contact-form" onSubmit={handleSubmit}>
                     <div className="form-field">
                         <label htmlFor="name">Name:</label>

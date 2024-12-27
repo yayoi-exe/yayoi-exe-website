@@ -4,8 +4,6 @@
 }
 
 .page-title {
-    font-size: 2rem;
-    margin-bottom: 20px;
     text-align: center;
 }
 
@@ -13,4 +11,19 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+}
+
+@media screen and (min-width: 767px) {
+    .page-title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .page-title {
+        font-size: 5px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
 }

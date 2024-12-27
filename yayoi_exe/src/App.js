@@ -14,8 +14,8 @@ function App() {
     return (
         <BrowserRouter>
             <div className="app-container">
-                <Header />
-                <div>
+                <Header className="header" />
+                <div className="main">
                     <Routes>
                         <Route path="/" element={<Main />} />
                         <Route path="/about" element={<About />} />
@@ -24,7 +24,7 @@ function App() {
                         <Route path="/Career" element={<Career />} />
                     </Routes>
                 </div>
-                <Footer />
+                <Footer className="footer" />
             </div>
         </BrowserRouter >
     );
