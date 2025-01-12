@@ -7,7 +7,6 @@ import About from "./pages/About";
 import Contact from './pages/Contact';
 import Projects from './pages/Projects';
 import Career from './pages/Career';
-import NewCareer from './pages/NewCareer';
 import './app.css';
 
 
@@ -20,10 +19,9 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Main />} />
                         <Route path="/about" element={<About />} />
+                        <Route path="/career" element={<Career />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/projects" element={<Projects />} />
-                        <Route path="/career" element={<Career />} />
-                        <Route path="/newcareer" element={<NewCareer />} />
                     </Routes>
                 </div>
                 <Footer className="footer" />

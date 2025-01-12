@@ -1,6 +1,6 @@
 import React from 'react';
 import AnimatedTitle from '../components/AnimatedTitle';
-import ImageFrame from '../components/ImageFrame';
+import ImageFrame from '../components/PhotoFrame';
 import '../assets/styles/main.css';
 
 const Main = () => {

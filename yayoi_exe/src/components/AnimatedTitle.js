@@ -5,7 +5,6 @@ import '../assets/styles/animatedTitle.css';
 const AnimatedTitle = () => {
     const contentRef = useRef(null);
     const isAnimatingRef = useRef(false);
-    const texts = ['Taichi Shirakawa', 'IT Engineer !!!', 'UX/UI Designer !'];
     const symbols = '_!&/?%=@';
     const totalDuration = 0.5;
     const displayDuration = 2.0;
@@ -64,7 +63,9 @@ const AnimatedTitle = () => {
     };
 
     useEffect(() => {
+        const texts = ['Taichi Shirakawa', 'IT Engineer !!!', 'UX/UI Designer !'];
         let index = 0;
+
         const cycleTexts = () => {
             const text = texts[index];
             animateText(text);
