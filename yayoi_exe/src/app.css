@@ -21,7 +21,8 @@
     .app-container {
         background-image: radial-gradient(#e0e0e0 2px, transparent 2px);
         background-size: 20px 20px;
-        height: 100vh;
+        min-height: 100vh;
+        height: 100%;
     }
 }
 
