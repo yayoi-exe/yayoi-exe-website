@@ -21,7 +21,7 @@ const EducationCard = ({ university, degree, year, research, skills, image, deta
                 {achievements?.length > 0 && (
                     <div className="project-achievements">
                         <h5 className="achievements-title">成果</h5>
-                        <ul>
+                        <ul className='achievements-list'>
                             {achievements.map((achievement, idx) => (
                                 <li key={idx}>
                                     <a

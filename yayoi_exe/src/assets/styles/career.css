@@ -1,27 +1,37 @@
-.career-container {
-    padding: 20px;
+.home-container {
+    color: black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.page-title {
+.home-main {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 16px;
+}
+
+.home-section {
+    margin-bottom: 48px;
+}
+
+.home-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 16px;
     text-align: center;
+}
+
+.home-description {
+    font-size: 1.25rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.home-subtitle {
     font-size: 2rem;
-    color: #333333;
-    margin-bottom: 20px;
-}
-
-.career-grid {
-    display: grid;
-    gap: 20px;
-}
-
-@media screen and (min-width: 767px) {
-    .career-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-}
-
-@media screen and (max-width: 479px) {
-    .career-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
+    font-weight: bold;
+    margin-bottom: 24px;
+    text-align: left;
 }

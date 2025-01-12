@@ -58,6 +58,16 @@
     color: #000000;
     font-weight: bold;
     text-decoration: none;
+    font-size: large;
+}
+
+.achievements-list {
+    list-style-position: outside;
+    padding-left: 20px;
+}
+
+.achievements-list li {
+    margin-left: 10px;
 }
 
 .project-achievements .achievement-link {

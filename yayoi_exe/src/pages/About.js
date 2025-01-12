@@ -1,5 +1,5 @@
 import React from 'react';
-import PhotoFrame from '../components/ImageFrame';
+import PhotoFrame from '../components/PhotoFrame';
 import IntroCodeFrame from '../components/IntroCodeFrame';
 import '../assets/styles/main.css';
 
