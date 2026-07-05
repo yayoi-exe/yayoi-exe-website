@@ -1,5 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 
+:root {
+    /* Typography */
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Base surfaces */
+    --color-bg: #000000;
+    --color-surface: #1e1e1e;
+    --color-surface-2: #252526;
+    --color-surface-3: #2d2d2d;
+    --color-border: #333333;
+    --color-tab-active: #343434;
+    --color-dot-grid: #e0e0e0;
+
+    /* Text */
+    --color-text: #ffffff;
+    --color-text-secondary: #cccccc;
+    --color-text-muted: #aaaaaa;
+    --color-text-dim: #b4b4b4;
+
+    /* Brand / accent */
+    --color-accent: #ffb31a;
+    --color-accent-hover: #ff9500;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +31,8 @@
 }
 
 body {
-    background-color: #000000;
-    font-family: 'JetBrains Mono', monospace;
+    background-color: var(--color-bg);
+    font-family: var(--font-mono);
 }
 
 image {

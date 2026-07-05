@@ -1,18 +1,14 @@
 import React from 'react';
 import AnimatedTitle from '../components/AnimatedTitle';
-import ImageFrame from '../components/PhotoFrame';
-import '../assets/styles/main.css';
+import PhotoFrame from '../components/PhotoFrame';
+import TwoColumnLayout from '../components/layout/TwoColumnLayout';
 
 const Main = () => {
     return (
-        <div className='main-container'>
-            <div className="containers">
-                <AnimatedTitle />
-            </div>
-            <div className="containers">
-                <ImageFrame />
-            </div>
-        </div>
+        <TwoColumnLayout>
+            <AnimatedTitle />
+            <PhotoFrame />
+        </TwoColumnLayout>
     );
 };
 

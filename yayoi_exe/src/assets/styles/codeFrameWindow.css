@@ -1,11 +1,11 @@
 .vscode-window {
-    border: 1px solid #333333;
+    border: 1px solid var(--color-border);
     border-radius: 8px;
     width: 90%;
     max-width: 800px;
-    background-color: #1E1E1E;
-    color: #CCCCCC;
-    font-family: "Fira Code", monospace;
+    background-color: var(--color-surface);
+    color: var(--color-text-secondary);
+    font-family: 'Fira Code', monospace;
     margin: 20px auto;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -20,8 +20,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 8px;
-    background-color: #2D2D2D;
-    border-bottom: 1px solid #333333;
+    background-color: var(--color-surface-3);
+    border-bottom: 1px solid var(--color-border);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
@@ -71,7 +71,7 @@
     max-width: 400px;
     aspect-ratio: 1;
     border-radius: 50%;
-    background: #ffb31a;
+    background: var(--color-accent);
     padding: 1%;
 }
 

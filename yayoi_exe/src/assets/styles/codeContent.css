@@ -16,16 +16,15 @@ pre {
     /* 長い単語を折り返す */
 }
 
-
 code {
     display: block;
-    font-family: "Fira Code", monospace;
+    font-family: 'Fira Code', monospace;
     color: #d4d4d4;
     white-space: pre;
 }
 
 .comment {
-    color: #598F4F;
+    color: #598f4f;
 }
 
 .keyword {
@@ -40,12 +39,12 @@ code {
     color: #ce9178;
 }
 
-.string.body {}
+.string.body {
+}
 
 .function {
     color: #dcdcaa;
 }
-
 
 @media screen and (min-width: 767px) {
     .code-content {

@@ -24,14 +24,14 @@
     display: flex;
     flex-direction: column;
     /* リンクを縦並びに配置 */
-    font-family: "Fira Code", monospace;
-    color: #FFFFFF;
+    font-family: 'Fira Code', monospace;
+    color: var(--color-text);
     /* 緑色でターミナル風 */
-    background-color: #1E1E1E;
+    background-color: var(--color-surface);
 }
 
 .terminal-command {
-    color: #AAAAAA;
+    color: var(--color-text-muted);
 }
 
 .link-list {
@@ -56,18 +56,19 @@
 }
 
 .link-command.email {
-    color: #FFB31A;
+    color: var(--color-accent);
 }
 
-
 .link {
-    color: #FFFFFF;
+    color: var(--color-text);
     text-decoration: none;
-    transition: color 0.3s ease, text-decoration 0.3s ease;
+    transition:
+        color 0.3s ease,
+        text-decoration 0.3s ease;
 }
 
 .link:hover {
-    color: #FFFFFF;
+    color: var(--color-text);
     text-decoration: underline;
 }
 

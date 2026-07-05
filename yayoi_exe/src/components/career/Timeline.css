@@ -16,11 +16,7 @@
     /* 中央 */
     width: 2px;
     height: 100%;
-    background: repeating-linear-gradient(to bottom,
-            #facc15,
-            #facc15 10px,
-            white 10px,
-            white 20px);
+    background: repeating-linear-gradient(to bottom, #facc15, #facc15 10px, white 10px, white 20px);
     z-index: 1;
 }
 

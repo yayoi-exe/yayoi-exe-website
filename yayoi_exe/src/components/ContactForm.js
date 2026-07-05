@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import "../assets/styles/contactForm.css";
+import React, { useState } from 'react';
+import '../assets/styles/contactForm.css';
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        message: "",
+        name: '',
+        email: '',
+        message: '',
     });
 
-    const [responseMessage, setResponseMessage] = useState("");
+    const [responseMessage, setResponseMessage] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e) => {
@@ -22,11 +22,18 @@ const ContactForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setResponseMessage('');
 
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        setResponseMessage("Message sent successfully!");
-        setIsSubmitting(false);
-        setFormData({ name: "", email: "", message: "" });
+        try {
+            // TODO: 実送信用のエンドポイント（EmailJS / Formspree / 自前API 等）に差し替える。
+            await new Promise((resolve) => setTimeout(resolve, 1500));
+            setResponseMessage('Message sent successfully!');
+            setFormData({ name: '', email: '', message: '' });
+        } catch (error) {
+            setResponseMessage('Failed to send. Please try again later.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -70,15 +77,20 @@ const ContactForm = () => {
                             required
                         />
                     </div>
-                    {responseMessage && (
-                        <p className="response-message">{responseMessage}</p>
-                    )}
-                    <button type="submit" className="submit-button" disabled={isSubmitting}>
-                        {isSubmitting ? "Sending..." : "Send"}
+                    <p className="response-message" role="status" aria-live="polite">
+                        {responseMessage}
+                    </p>
+                    <button
+                        type="submit"
+                        className="submit-button"
+                        disabled={isSubmitting}
+                        aria-busy={isSubmitting}
+                    >
+                        {isSubmitting ? 'Sending...' : 'Send'}
                     </button>
                 </form>
             </div>
-        </div >
+        </div>
     );
 };
 

@@ -19,7 +19,7 @@
 
 @media screen and (min-width: 767px) {
     .app-container {
-        background-image: radial-gradient(#e0e0e0 2px, transparent 2px);
+        background-image: radial-gradient(var(--color-dot-grid) 2px, transparent 2px);
         background-size: 20px 20px;
         min-height: 100vh;
         height: 100%;
@@ -28,7 +28,7 @@
 
 @media screen and (max-width: 479px) {
     .app-container {
-        background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+        background-image: radial-gradient(var(--color-dot-grid) 1px, transparent 1px);
         background-size: 10px 10px;
         height: auto;
         min-height: 100vh;

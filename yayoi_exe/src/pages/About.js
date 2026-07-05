@@ -1,18 +1,14 @@
 import React from 'react';
 import PhotoFrame from '../components/PhotoFrame';
 import IntroCodeFrame from '../components/IntroCodeFrame';
-import '../assets/styles/main.css';
+import TwoColumnLayout from '../components/layout/TwoColumnLayout';
 
 const About = () => {
     return (
-        <div className='main-container'>
-            <div className="containers">
-                <PhotoFrame />
-            </div>
-            <div className="containers">
-                <IntroCodeFrame />
-            </div>
-        </div>
+        <TwoColumnLayout>
+            <PhotoFrame />
+            <IntroCodeFrame />
+        </TwoColumnLayout>
     );
 };
 

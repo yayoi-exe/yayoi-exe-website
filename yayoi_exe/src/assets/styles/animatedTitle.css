@@ -1,5 +1,5 @@
 .container {
-    color: #FFB31A;
+    color: var(--color-accent);
     text-align: center;
     width: 100%;
     overflow: hidden;
@@ -9,7 +9,9 @@
     white-space: nowrap;
     overflow: hidden;
     box-sizing: border-box;
-    transition: color 0.3s, border-color 0.3s;
+    transition:
+        color 0.3s,
+        border-color 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,7 +19,7 @@
 }
 
 #animated-title:hover {
-    color: #FF9500;
+    color: var(--color-accent-hover);
 }
 
 #animated-title .prefix {

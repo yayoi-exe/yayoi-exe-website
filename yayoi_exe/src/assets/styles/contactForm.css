@@ -10,20 +10,20 @@
 }
 
 .form-field label {
-    color: #AAAAAA;
+    color: var(--color-text-muted);
 }
 
 .form-field input,
 .form-field textarea {
-    background-color: #000000;
-    color: #FFFFFF;
-    font-family: "Fira Code", monospace;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Fira Code', monospace;
     flex: 1;
 }
 
 .form-field input:focus,
 .form-field textarea:focus {
-    border-color: #FFFFFF;
+    border-color: var(--color-text);
 }
 
 .response-message {
@@ -31,16 +31,16 @@
 }
 
 .submit-button {
-    background-color: #FFB31A;
+    background-color: var(--color-accent);
     color: #111111;
     border: none;
-    font-family: "Fira Code", monospace;
+    font-family: 'Fira Code', monospace;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .submit-button:hover {
-    background-color: #FF9500;
+    background-color: var(--color-accent-hover);
 }
 
 .submit-button:disabled {
@@ -50,7 +50,7 @@
 }
 
 .warning {
-    color: #FF0000;
+    color: #ff0000;
 }
 
 @media screen and (min-width: 767px) {

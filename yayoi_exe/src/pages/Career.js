@@ -4,12 +4,12 @@ import educationData from '../data/education.json';
 import EducationCard from '../components/career/EducationCard';
 import Timeline from '../components/career/Timeline';
 
-const NewCareer = () => {
+const Career = () => {
     const timelineItems = educationData.map((data) => {
         const year = data.end ? `${data.start}\n -- \n${data.end}` : `${data.start}\n --- \n現在`;
         const title = data.type === 'education' ? data.university : data.company;
         const description = data.type === 'education' ? data.degree : data.title;
-        return { year, title, description };
+        return { id: data.id, year, title, description };
     });
 
     return (
@@ -24,8 +24,12 @@ const NewCareer = () => {
                     <h2 className="home-subtitle">学歴</h2>
                     {educationData
                         .filter((data) => data.type === 'education')
-                        .map((edu, index) => (
-                            <EducationCard key={index} {...edu} />
+                        .map((edu) => (
+                            <EducationCard
+                                key={edu.id}
+                                {...edu}
+                                year={edu.end ? `${edu.start} - ${edu.end}` : `${edu.start} - 現在`}
+                            />
                         ))}
                 </section>
             </main>
@@ -33,4 +37,4 @@ const NewCareer = () => {
     );
 };
 
-export default NewCareer;
+export default Career;

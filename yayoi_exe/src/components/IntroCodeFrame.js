@@ -2,7 +2,7 @@ import React from 'react';
 import CodeFrameWindow from './CodeFrameWindow';
 import IntroCodeContent from './IntroCodeContent';
 
-const CodeFrame = () => {
+const IntroCodeFrame = () => {
     return (
         <CodeFrameWindow title="AboutMe.py">
             <IntroCodeContent />
@@ -10,4 +10,4 @@ const CodeFrame = () => {
     );
 };
 
-export default CodeFrame;
+export default IntroCodeFrame;

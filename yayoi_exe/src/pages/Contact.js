@@ -1,7 +1,7 @@
-import React from "react";
-import CodeFrameWindow from "../components/CodeFrameWindow";
-import ContactForm from "../components/ContactForm";
-import "../assets/styles/contact.css";
+import React from 'react';
+import CodeFrameWindow from '../components/CodeFrameWindow';
+import ContactForm from '../components/ContactForm';
+import '../assets/styles/contact.css';
 
 const Contact = () => {
     return (

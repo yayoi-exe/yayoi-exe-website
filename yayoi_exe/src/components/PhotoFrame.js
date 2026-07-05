@@ -1,12 +1,12 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import CodeFrameWindow from "./CodeFrameWindow";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import CodeFrameWindow from './CodeFrameWindow';
 
-const ImageFrame = () => {
+const PhotoFrame = () => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate("/about");
+        navigate('/about');
     };
 
     return (
@@ -22,4 +22,4 @@ const ImageFrame = () => {
     );
 };
 
-export default ImageFrame;
+export default PhotoFrame;

@@ -1,14 +1,13 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Main from "./pages/Main";
-import About from "./pages/About";
+import Main from './pages/Main';
+import About from './pages/About';
 import Contact from './pages/Contact';
 import Projects from './pages/Projects';
 import Career from './pages/Career';
 import './app.css';
-
 
 function App() {
     return (
@@ -26,7 +25,7 @@ function App() {
                 </div>
                 <Footer className="footer" />
             </div>
-        </BrowserRouter >
+        </BrowserRouter>
     );
 }
 

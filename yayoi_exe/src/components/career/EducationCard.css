@@ -71,11 +71,11 @@
 }
 
 .project-achievements .achievement-link {
-    color: #007BFF;
+    color: #007bff;
     text-decoration: none;
 }
 
 .project-achievements .achievement-link:hover {
-    color: #007BFF;
+    color: #007bff;
     text-decoration: underline;
 }

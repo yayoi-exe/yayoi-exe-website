@@ -1,15 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../assets/styles/projectCard.css';
 
 const ProjectCard = ({ project }) => {
     return (
         <div className="project-card">
             {/* サムネイル画像 */}
-            <img
-                src={project.thumbnail}
-                alt={project.name}
-                className="project-thumbnail"
-            />
+            <img src={project.thumbnail} alt={project.name} className="project-thumbnail" />
 
             {/* プロジェクト名 */}
             <h2 className="project-name">{project.name}</h2>
@@ -19,11 +16,14 @@ const ProjectCard = ({ project }) => {
 
             {/* 使用技術スタック */}
             <div className="project-tech-stack">
-                {project.techStack.map((tech, index) => (
-                    tech && ( // 空文字を表示しない
-                        <span key={index} className="tech-badge">{tech}</span>
-                    )
-                ))}
+                {project.techStack.map(
+                    (tech, index) =>
+                        tech && ( // 空文字を表示しない
+                            <span key={index} className="tech-badge">
+                                {tech}
+                            </span>
+                        )
+                )}
             </div>
 
             {/* プロジェクトリンク */}
@@ -41,6 +41,16 @@ const ProjectCard = ({ project }) => {
             )}
         </div>
     );
+};
+
+ProjectCard.propTypes = {
+    project: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string,
+        thumbnail: PropTypes.string,
+        techStack: PropTypes.arrayOf(PropTypes.string),
+        webLink: PropTypes.string,
+    }).isRequired,
 };
 
 export default ProjectCard;

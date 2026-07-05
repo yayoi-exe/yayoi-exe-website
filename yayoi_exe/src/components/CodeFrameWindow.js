@@ -1,12 +1,26 @@
-import React from "react";
-import "../assets/styles/codeFrameWindow.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import '../assets/styles/codeFrameWindow.css';
 
 const CodeFrameWindow = ({ title, children, onClick }) => {
+    const isInteractive = Boolean(onClick);
+
+    const handleKeyDown = (event) => {
+        if (!isInteractive) return;
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            onClick(event);
+        }
+    };
+
     return (
         <div
             className="vscode-window"
             onClick={onClick}
-            style={{ cursor: onClick ? "pointer" : "default" }}
+            onKeyDown={handleKeyDown}
+            role={isInteractive ? 'button' : undefined}
+            tabIndex={isInteractive ? 0 : undefined}
+            style={{ cursor: isInteractive ? 'pointer' : 'default' }}
         >
             <div className="vscode-header">
                 <div className="vscode-buttons">
@@ -19,6 +33,12 @@ const CodeFrameWindow = ({ title, children, onClick }) => {
             <div className="vscode-content">{children}</div>
         </div>
     );
+};
+
+CodeFrameWindow.propTypes = {
+    title: PropTypes.string,
+    children: PropTypes.node,
+    onClick: PropTypes.func,
 };
 
 export default CodeFrameWindow;
