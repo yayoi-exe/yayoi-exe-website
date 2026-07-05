@@ -22,8 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# 画像ファイル
-*.png
-*.jpg
-*.jpeg
-*.gif
+# NOTE: サイト表示に必要な画像（public/images 配下など）はリポジトリに含める。
+# 画像を無視したい場合は、対象ディレクトリだけを個別に指定すること。
+# 例: /uploads/

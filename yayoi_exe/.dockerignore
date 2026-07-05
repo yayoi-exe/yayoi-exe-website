@@ -1,0 +1,10 @@
+node_modules
+build
+coverage
+.git
+.gitignore
+.husky
+npm-debug.log*
+.env.local
+.env.*.local
+**/.DS_Store

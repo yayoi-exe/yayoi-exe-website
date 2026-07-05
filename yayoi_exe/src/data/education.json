@@ -1,0 +1,55 @@
+[
+    {
+        "id": 1,
+        "type": "education",
+        "university": "東京工業高等専門学校",
+        "degree": "情報工学科",
+        "start": 2017,
+        "end": 2022,
+        "research": "移動困難者向け支援サービス円滑化のためのシステム構築と利用実態把握のためのデータ分析",
+        "skills": ["Python", "Django", "Vue.js", "PostgreSQL", "Docker"],
+        "image": "/placeholder.svg",
+        "details": "車の位置情報から停車場所、利用頻度、利用範囲、速度超過などをPythonで分析。車の予約フォームや予約カレンダー、停車場所一覧、現在地、速度超過確認ページなどをVue.jsとDjangoで開発。",
+        "achievements": [
+            {
+                "name": "令和3年度社会実装教育フォーラム 【最優秀社会実装賞／社会実装賞】",
+                "link": "https://www.tokyo-ct.ac.jp/news/20220325_01/"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "type": "education",
+        "university": "東京工業高等専門学校",
+        "degree": "専攻科 機械情報システム工学専攻",
+        "start": 2022,
+        "end": 2024,
+        "research": "ディープラーニングを使用した光源方向に依存しない点字文字認識",
+        "skills": ["Python", "PyTorch", "Detectron2"],
+        "image": "/placeholder.svg",
+        "details": "ディープラーニングを活用し、光源方向に依存しない点字認識技術を開発。PyTorchを使用し、物体検出ライブラリDetectron2を採用。新しいデータセットを組み合わせ、認識精度AP50で97%を達成。",
+        "achievements": [
+            {
+                "name": "情報処理学会 第86回全国大会",
+                "link": "https://www.ipsj.or.jp/event/taikai/86/WEB/data/pdf/1ZJ-01.html"
+            },
+            {
+                "name": "学会論文ダウンロード",
+                "link": "https://ipsj.ixsq.nii.ac.jp/ej/?action=repository_uri&item_id=236923&file_id=1&file_no=1"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "type": "education",
+        "university": "慶應義塾大学大学院",
+        "degree": "メディアデザイン研究科",
+        "start": 2024,
+        "end": null,
+        "research": "__",
+        "skills": ["Unity", "C#", "VR", "触覚フィードバックシステム"],
+        "image": "/placeholder.svg",
+        "details": "VRや触覚フィードバックシステムを活用した研究。低負荷VRアバター操作デバイスの設計と実験を予定。",
+        "achievements": []
+    }
+]
