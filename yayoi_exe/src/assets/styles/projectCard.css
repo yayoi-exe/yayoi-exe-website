@@ -17,7 +17,7 @@
     color: var(--color-text);
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
     transition:
         transform 0.2s,
         box-shadow 0.2s;
@@ -25,7 +25,7 @@
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-lg);
 }
 
 .project-thumbnail {
@@ -45,8 +45,8 @@
 }
 
 .tech-badge {
-    background: #444;
-    color: #fff;
+    background: var(--color-neutral-800);
+    color: var(--color-text);
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 0.8rem;
@@ -59,19 +59,19 @@
     margin: 5px 0;
     border-radius: 5px;
     text-decoration: none;
-    color: #fff;
-    background: #007acc;
+    color: var(--color-text);
+    background: var(--color-link);
     transition: background 0.2s;
 }
 
 .project-links .button:hover {
-    background: #005f99;
+    background: var(--color-link-hover);
 }
 
 .project-links .button.secondary {
-    background: #555;
+    background: var(--color-neutral-700);
 }
 
 .project-links .button.secondary:hover {
-    background: #333;
+    background: var(--color-border);
 }

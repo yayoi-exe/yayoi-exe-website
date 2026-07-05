@@ -15,12 +15,11 @@ const CodeFrameWindow = ({ title, children, onClick }) => {
 
     return (
         <div
-            className="vscode-window"
+            className={`vscode-window ${isInteractive ? 'is-interactive' : ''}`}
             onClick={onClick}
             onKeyDown={handleKeyDown}
             role={isInteractive ? 'button' : undefined}
             tabIndex={isInteractive ? 0 : undefined}
-            style={{ cursor: isInteractive ? 'pointer' : 'default' }}
         >
             <div className="vscode-header">
                 <div className="vscode-buttons">

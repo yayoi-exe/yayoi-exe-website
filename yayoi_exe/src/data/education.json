@@ -45,11 +45,19 @@
         "university": "慶應義塾大学大学院",
         "degree": "メディアデザイン研究科",
         "start": 2024,
-        "end": null,
+        "end": 2026,
         "research": "__",
         "skills": ["Unity", "C#", "VR", "触覚フィードバックシステム"],
         "image": "/placeholder.svg",
         "details": "VRや触覚フィードバックシステムを活用した研究。低負荷VRアバター操作デバイスの設計と実験を予定。",
         "achievements": []
+    },
+    {
+        "id": 4,
+        "type": "work",
+        "company": "楽天グループ株式会社",
+        "title": "アプリケーションエンジニア",
+        "start": 2026,
+        "end": null
     }
 ]

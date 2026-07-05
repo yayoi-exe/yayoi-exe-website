@@ -12,21 +12,37 @@ const IntroCodeContent = () => {
                     <span className="string body">Taichi Shirakawa</span>
                     <span className="string">"</span>;
                     <br />
-                    <span className="variable">role</span> = [<span className="string">"</span>
-                    <span className="string body">Software Engineer</span>
-                    <span className="string">"</span>, <span className="string">"</span>
-                    <span className="string body">Master's Student</span>
-                    <span className="string">"</span>];
+                    <span className="variable">role</span> = [
                     <br />
-                    <span className="variable">skills</span> = [<span className="string">"</span>
+                    {'    '}
+                    <span className="string">"</span>
+                    <span className="string body">Software Engineer</span>
+                    <span className="string">",</span>
+                    <br />
+                    {'    '}
+                    <span className="string">"</span>
+                    <span className="string body">Application Engineer</span>
+                    <span className="string">"</span>
+                    <br />
+                    ];
+                    <br />
+                    <span className="variable">skills</span> = [
+                    <br />
+                    {'    '}
+                    <span className="string">"</span>
                     <span className="string body">Python</span>
-                    <span className="string">"</span>, <span className="string">"</span>
+                    <span className="string">",</span> <span className="string">"</span>
                     <span className="string body">React.js</span>
-                    <span className="string">"</span>, <span className="string">"</span>
+                    <span className="string">",</span>
+                    <br />
+                    {'    '}
+                    <span className="string">"</span>
                     <span className="string body">C#</span>
-                    <span className="string">"</span>, <span className="string">"</span>
+                    <span className="string">",</span> <span className="string">"</span>
                     <span className="string body">Unity</span>
-                    <span className="string">"</span>];
+                    <span className="string">"</span>
+                    <br />
+                    ];
                     <br />
                     <br />
                     <span className="function">print</span>(<span className="string">"</span>

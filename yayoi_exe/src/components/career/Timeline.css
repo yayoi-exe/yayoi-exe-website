@@ -16,7 +16,13 @@
     /* 中央 */
     width: 2px;
     height: 100%;
-    background: repeating-linear-gradient(to bottom, #facc15, #facc15 10px, white 10px, white 20px);
+    background: repeating-linear-gradient(
+        to bottom,
+        var(--color-highlight),
+        var(--color-highlight) 10px,
+        var(--color-surface-light) 10px,
+        var(--color-surface-light) 20px
+    );
     z-index: 1;
 }
 
@@ -57,9 +63,9 @@
 }
 
 .timeline-year-text {
-    background-color: #facc15;
+    background-color: var(--color-highlight);
     /* 黄色 */
-    color: black;
+    color: var(--color-text-on-light);
     font-weight: bold;
     text-align: center;
     width: 48px;
@@ -69,15 +75,15 @@
     align-items: center;
     justify-content: center;
     font-size: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
 }
 
 /* タイムラインの内容 */
 .timeline-content {
-    background-color: white;
+    background-color: var(--color-surface-light);
     border-radius: 8px;
     padding: 16px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
     width: 45%;
     /* アイテム幅を調整 */
     position: relative;
@@ -88,11 +94,11 @@
     font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 8px;
-    color: #2d3748;
+    color: var(--color-text-on-light-heading);
 }
 
 .timeline-content p {
     font-size: 0.875rem;
     line-height: 1.5;
-    color: #1a202c;
+    color: var(--color-text-on-light-body);
 }

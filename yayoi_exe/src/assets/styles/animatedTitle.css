@@ -2,12 +2,10 @@
     color: var(--color-accent);
     text-align: center;
     width: 100%;
-    overflow: hidden;
 }
 
 #animated-title {
     white-space: nowrap;
-    overflow: hidden;
     box-sizing: border-box;
     transition:
         color 0.3s,
@@ -23,7 +21,7 @@
 }
 
 #animated-title .prefix {
-    color: #000000;
+    color: var(--color-text-on-light);
     flex-shrink: 0;
 }
 
@@ -37,7 +35,7 @@
     }
 
     #animated-title {
-        font-size: 4vw;
+        font-size: 3.2vw;
     }
 }
 

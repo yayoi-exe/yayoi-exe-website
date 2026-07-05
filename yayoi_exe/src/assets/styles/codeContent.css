@@ -1,6 +1,6 @@
 .code-content {
     flex-grow: 1;
-    background-color: #1e1e1e;
+    background-color: var(--color-surface);
     max-width: 100%;
     /* 親要素の幅を超えない */
     overflow-x: auto;
@@ -18,32 +18,31 @@ pre {
 
 code {
     display: block;
-    font-family: 'Fira Code', monospace;
-    color: #d4d4d4;
+    color: var(--code-text);
     white-space: pre;
 }
 
 .comment {
-    color: #598f4f;
+    color: var(--code-comment);
 }
 
 .keyword {
-    color: #569cd6;
+    color: var(--code-keyword);
 }
 
 .variable {
-    color: #9cdcfe;
+    color: var(--code-variable);
 }
 
 .string {
-    color: #ce9178;
+    color: var(--code-string);
 }
 
 .string.body {
 }
 
 .function {
-    color: #dcdcaa;
+    color: var(--code-function);
 }
 
 @media screen and (min-width: 767px) {

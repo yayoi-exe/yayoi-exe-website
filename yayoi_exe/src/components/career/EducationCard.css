@@ -1,6 +1,6 @@
 .education-card {
-    background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-surface-light);
+    box-shadow: var(--shadow-sm);
     border-radius: 8px;
     overflow: hidden;
     margin: 16px;
@@ -23,7 +23,7 @@
 }
 
 .education-card-degree {
-    color: #4a4a4a;
+    color: var(--color-text-on-light-soft);
     margin-bottom: 8px;
 }
 
@@ -39,15 +39,15 @@
 }
 
 .education-card-skill {
-    background-color: #facc15;
-    color: black;
+    background-color: var(--color-highlight);
+    color: var(--color-text-on-light);
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 0.875rem;
 }
 
 .education-card-details {
-    color: #4a4a4a;
+    color: var(--color-text-on-light-soft);
 }
 
 .project-achievements {
@@ -55,7 +55,7 @@
 }
 
 .project-achievements .achievements-title {
-    color: #000000;
+    color: var(--color-text-on-light);
     font-weight: bold;
     text-decoration: none;
     font-size: large;
@@ -71,11 +71,11 @@
 }
 
 .project-achievements .achievement-link {
-    color: #007bff;
+    color: var(--color-link);
     text-decoration: none;
 }
 
 .project-achievements .achievement-link:hover {
-    color: #007bff;
+    color: var(--color-link-hover);
     text-decoration: underline;
 }

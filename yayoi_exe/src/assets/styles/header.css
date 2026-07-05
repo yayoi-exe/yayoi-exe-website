@@ -19,6 +19,7 @@
     background-color: transparent;
     cursor: pointer;
     position: relative;
+    z-index: 1;
     text-decoration: none;
     display: flex;
     justify-content: center;
@@ -26,27 +27,60 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    transition:
-        background-color 0.3s ease,
-        border-top 0.3s ease;
+    transition: color 0.25s ease;
 }
 
 .header-tab.active {
-    background-color: var(--color-tab-active);
     color: var(--color-text);
 }
 
 .header-tab:hover {
-    background-color: var(--color-tab-active);
     color: var(--color-text);
 }
 
 .nav-tabs {
+    position: relative;
     display: flex;
     flex-wrap: nowrap;
     flex-shrink: 0;
     white-space: nowrap;
     overflow: hidden;
+}
+
+/* アクティブタブを表す共有スライダー。DOM座標に合わせて滑らかに移動する */
+.nav-tab-slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    background-color: var(--color-tab-active);
+    opacity: 0;
+    pointer-events: none;
+    will-change: transform, width;
+}
+
+.nav-tab-slider.is-visible {
+    opacity: 1;
+}
+
+/* 初回描画以降のみアニメーション。ウィンドウ移動のようにヌルッと追従させる */
+.nav-tab-slider.is-animated {
+    transition:
+        transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+        width 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.2s ease;
+}
+
+/* ホバー時はスライダーの上に薄いハイライトを重ねる */
+.header-tab:not(.active):hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--color-tab-active);
+    opacity: 0.5;
+    border-radius: inherit;
 }
 
 @media screen and (min-width: 767px) {
@@ -59,9 +93,6 @@
         margin-right: 1rem;
         padding: 0.5rem 1rem;
         border-radius: 2px;
-        transition:
-            background-color 0.3s ease,
-            border-top 0.3s ease;
         border-top: 4px solid transparent;
         width: 120px;
     }
@@ -70,7 +101,8 @@
         font-size: 1.5rem;
     }
 
-    .header-tab.active {
+    .nav-tab-slider {
+        border-radius: 2px;
         border-top: 4px solid var(--color-accent);
     }
 }
@@ -93,7 +125,8 @@
         width: 55px;
     }
 
-    .header-tab.active {
+    .nav-tab-slider {
+        border-radius: 0.1px;
         border-top: 1px solid var(--color-accent);
     }
 }

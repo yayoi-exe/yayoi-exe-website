@@ -5,14 +5,21 @@
     max-width: 800px;
     background-color: var(--color-surface);
     color: var(--color-text-secondary);
-    font-family: 'Fira Code', monospace;
     margin: 20px auto;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-md);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
-.vscode-window:hover {
+/* クリック可能なときだけホバー演出を出す */
+.vscode-window.is-interactive {
+    cursor: pointer;
+}
+
+.vscode-window.is-interactive:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--shadow-xl);
 }
 
 .vscode-header {
@@ -35,19 +42,19 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: gray;
+    background-color: var(--color-neutral-500);
 }
 
 .vscode-button.red {
-    background-color: #f96256;
+    background-color: var(--color-window-close);
 }
 
 .vscode-button.yellow {
-    background-color: #fdbc3d;
+    background-color: var(--color-window-minimize);
 }
 
 .vscode-button.green {
-    background-color: #34c749;
+    background-color: var(--color-window-maximize);
 }
 
 .vscode-title {

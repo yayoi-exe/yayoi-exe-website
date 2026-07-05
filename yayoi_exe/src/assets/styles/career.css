@@ -1,5 +1,5 @@
 .home-container {
-    color: black;
+    color: var(--color-text-on-light);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
