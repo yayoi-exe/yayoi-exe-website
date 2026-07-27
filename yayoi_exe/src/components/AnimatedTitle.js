@@ -1,20 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import useTypewriterEffect from '../hooks/useTypewriterEffect';
 import '../assets/styles/animatedTitle.css';
 
-const TITLES = ['Taichi Shirakawa', 'IT Engineer !!!', 'UX/UI Designer !'];
+const AnimatedTitle = ({ phrases }) => {
+    const contentRef = useTypewriterEffect(phrases);
 
-const AnimatedTitle = () => {
-    const contentRef = useTypewriterEffect(TITLES);
+    return <p className="home-tagline" ref={contentRef}></p>;
+};
 
-    return (
-        <div className="container">
-            <h1 id="animated-title">
-                <span className="prefix">I'm&nbsp;</span>
-                <span ref={contentRef}></span>
-            </h1>
-        </div>
-    );
+AnimatedTitle.propTypes = {
+    phrases: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default AnimatedTitle;

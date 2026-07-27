@@ -1,46 +1,7 @@
-.container {
-    color: var(--color-accent);
-    text-align: center;
-    width: 100%;
-}
-
-#animated-title {
-    white-space: nowrap;
-    box-sizing: border-box;
-    transition:
-        color 0.3s,
-        border-color 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: default;
-}
-
-#animated-title:hover {
-    color: var(--color-accent-hover);
-}
-
-#animated-title .prefix {
-    color: var(--color-text-on-light);
-    flex-shrink: 0;
-}
-
-#animated-title span {
-    display: block;
-}
-
-@media screen and (min-width: 767px) {
-    .container {
-        margin-left: 1.5%;
-    }
-
-    #animated-title {
-        font-size: 3.2vw;
-    }
-}
-
-@media screen and (max-width: 479px) {
-    #animated-title {
-        font-size: 7vw;
-    }
+.home-tagline {
+    font-family: var(--font-base);
+    font-weight: var(--font-weight-regular);
+    font-size: 1.1rem;
+    color: var(--color-sub2);
+    min-height: 1.6em;
 }
