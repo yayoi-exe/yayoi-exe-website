@@ -1,104 +1,69 @@
-/* タイムライン全体 */
-.timeline-container {
+.timeline-list {
+    list-style: none;
     position: relative;
-    padding: 16px 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 2.5rem;
+    padding-left: 10px;
 }
 
-/* タイムラインの中央軌跡 */
-.timeline-container::before {
+.timeline-list::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 50%;
-    /* 中央 */
+    left: 20px;
+    top: 14px;
+    bottom: 14px;
     width: 2px;
-    height: 100%;
-    background: repeating-linear-gradient(
-        to bottom,
-        var(--color-highlight),
-        var(--color-highlight) 10px,
-        var(--color-surface-light) 10px,
-        var(--color-surface-light) 20px
-    );
+    background-color: var(--color-sub2);
+    opacity: 0.5;
+}
+
+.timeline-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    position: relative;
     z-index: 1;
 }
 
-/* タイムラインアイテム */
-.timeline-item {
-    position: relative;
-    margin-bottom: 32px;
-    width: 100%;
-    /* 幅を100%に設定 */
-    display: flex;
-    justify-content: center;
-    /* アイテム全体を中央に配置 */
-    align-items: flex-start;
+.timeline-body {
+    flex: 1;
 }
 
-/* 左側のアイテム */
-.timeline-item.left .timeline-content {
-    margin-right: auto;
-    /* 左側に寄せる */
-    text-align: right;
-}
-
-/* 右側のアイテム */
-.timeline-item.right .timeline-content {
-    margin-left: auto;
-    /* 右側に寄せる */
-    text-align: left;
-}
-
-/* タイムラインの年表示 */
-.timeline-year {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    /* 中央軌跡に配置 */
-    transform: translateX(-50%);
-    z-index: 2;
-}
-
-.timeline-year-text {
-    background-color: var(--color-highlight);
-    /* 黄色 */
-    color: var(--color-text-on-light);
-    font-weight: bold;
-    text-align: center;
-    width: 48px;
-    height: 48px;
+.timeline-dot {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    box-shadow: var(--shadow-sm);
+    background-color: var(--color-sub2);
+    margin-top: 4px;
 }
 
-/* タイムラインの内容 */
-.timeline-content {
-    background-color: var(--color-surface-light);
-    border-radius: 8px;
-    padding: 16px;
-    box-shadow: var(--shadow-sm);
-    width: 45%;
-    /* アイテム幅を調整 */
-    position: relative;
-    z-index: 2;
+.timeline-dot.is-current {
+    background-color: var(--color-accent);
 }
 
-.timeline-content h3 {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: var(--color-text-on-light-heading);
-}
-
-.timeline-content p {
+.timeline-year {
+    display: block;
+    font-family: var(--font-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-sub2);
     font-size: 0.875rem;
-    line-height: 1.5;
-    color: var(--color-text-on-light-body);
+    margin-bottom: 0.25rem;
+}
+
+.timeline-title {
+    font-family: var(--font-base);
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-sub1);
+    margin-bottom: 0.25rem;
+}
+
+.timeline-description {
+    font-family: var(--font-base);
+    font-size: 0.95rem;
+    font-weight: var(--font-weight-regular);
+    color: var(--color-sub2);
+    line-height: 1.6;
 }

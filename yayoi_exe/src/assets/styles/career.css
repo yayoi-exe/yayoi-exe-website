@@ -1,37 +1,26 @@
-.home-container {
-    color: var(--color-text-on-light);
-    min-height: 100vh;
+.career-container {
     display: flex;
-    flex-direction: column;
-}
-
-.home-main {
-    flex: 1;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 32px 16px;
+    padding: 4rem 2rem;
 }
 
-.home-section {
-    margin-bottom: 48px;
+.career-timeline {
+    flex: 1 1 auto;
+    max-width: 640px;
 }
 
-.home-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 16px;
-    text-align: center;
-}
-
-.home-description {
-    font-size: 1.25rem;
-    text-align: center;
-    line-height: 1.6;
-}
-
-.home-subtitle {
+.career-heading {
+    font-family: var(--font-base);
+    font-weight: var(--font-weight-bold);
     font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 24px;
-    text-align: left;
+    color: var(--color-sub1);
+    margin-bottom: 2rem;
+}
+
+.career-photo {
+    flex: 0 0 auto;
 }

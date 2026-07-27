@@ -5,25 +5,27 @@ import './Timeline.css';
 
 const Timeline = ({ items }) => {
     return (
-        <div className="timeline-container">
+        <ol className="timeline-list">
             {items.map((item, index) => (
-                <motion.div
-                    key={item.id ?? index}
-                    className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                <motion.li
+                    key={item.id}
+                    className="timeline-row"
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.08 }}
                 >
-                    <div className="timeline-year">
-                        <h1 className="timeline-year-text">{item.year}</h1>
+                    <span
+                        className={`timeline-dot ${item.isCurrent ? 'is-current' : ''}`}
+                        aria-hidden="true"
+                    />
+                    <div className="timeline-body">
+                        <span className="timeline-year">{item.year}</span>
+                        <h3 className="timeline-title">{item.title}</h3>
+                        <p className="timeline-description">{item.description}</p>
                     </div>
-                    <div className="timeline-content">
-                        <h3>{item.title}</h3>
-                        <p>{item.description}</p>
-                    </div>
-                </motion.div>
+                </motion.li>
             ))}
-        </div>
+        </ol>
     );
 };
 
@@ -34,6 +36,7 @@ Timeline.propTypes = {
             year: PropTypes.string,
             title: PropTypes.string,
             description: PropTypes.string,
+            isCurrent: PropTypes.bool,
         })
     ).isRequired,
 };
