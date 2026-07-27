@@ -1,118 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=M+PLUS+1:wght@400;700&display=swap');
 
 :root {
+    /* ── Colors ── */
+    --color-accent: #f5b700;
+    --color-accent-soft: rgba(245, 183, 0, 0.5);
+    --color-sub1: #1a1a1a;
+    --color-sub2: #71717a;
+    --color-main: #fafaf7;
+
     /* ── Typography ── */
-    --font-mono: 'JetBrains Mono', monospace;
-
-    /* ── Palette (primitives) ── */
-    --palette-black: #000000;
-    --palette-white: #ffffff;
-
-    /* Dark surfaces & borders */
-    --palette-gray-950: #1a202c;
-    --palette-gray-900: #1e1e1e;
-    --palette-gray-850: #252526;
-    --palette-gray-800: #2d2d2d;
-    --palette-gray-750: #333333;
-    --palette-gray-700: #343434;
-    --palette-gray-600: #444444;
-    --palette-gray-500: #555555;
-    --palette-gray-400: #666666;
-    --palette-gray-300: #8e8e8e;
-    --palette-gray-200: #aaaaaa;
-    --palette-gray-150: #b4b4b4;
-    --palette-gray-100: #cccccc;
-    --palette-gray-50: #d4d4d4;
-    --palette-gray-25: #e0e0e0;
-
-    /* Light page text */
-    --palette-slate-800: #2d3748;
-    --palette-slate-600: #4a4a4a;
-
-    /* Brand */
-    --palette-accent: #ffb31a;
-    --palette-accent-hover: #ff9500;
-
-    /* Interactive */
-    --palette-link: #007acc;
-    --palette-link-hover: #005f99;
-    --palette-info: #00f7ff;
-    --palette-success: #57ff1a;
-    --palette-danger: #ff0000;
-
-    /* Window traffic-light buttons */
-    --palette-window-close: #f96256;
-    --palette-window-minimize: #fdbc3d;
-    --palette-window-maximize: #34c749;
-
-    /* Code syntax (VS Code theme) */
-    --palette-code-comment: #598f4f;
-    --palette-code-keyword: #569cd6;
-    --palette-code-variable: #9cdcfe;
-    --palette-code-string: #ce9178;
-    --palette-code-function: #dcdcaa;
-
-    /* ── Semantic: surfaces ── */
-    --color-bg: var(--palette-black);
-    --color-surface: var(--palette-gray-900);
-    --color-surface-2: var(--palette-gray-850);
-    --color-surface-3: var(--palette-gray-800);
-    --color-surface-light: var(--palette-white);
-    --color-border: var(--palette-gray-750);
-    --color-tab-active: var(--palette-gray-700);
-    --color-dot-grid: var(--palette-gray-25);
-
-    /* ── Semantic: text on dark surfaces ── */
-    --color-text: var(--palette-white);
-    --color-text-secondary: var(--palette-gray-100);
-    --color-text-muted: var(--palette-gray-200);
-    --color-text-dim: var(--palette-gray-150);
-
-    /* ── Semantic: text on light surfaces ── */
-    --color-text-on-light: var(--palette-black);
-    --color-text-on-light-soft: var(--palette-slate-600);
-    --color-text-on-light-heading: var(--palette-slate-800);
-    --color-text-on-light-body: var(--palette-gray-950);
-
-    /* ── Semantic: brand & highlight ── */
-    --color-accent: var(--palette-accent);
-    --color-accent-hover: var(--palette-accent-hover);
-    --color-highlight: var(--color-accent);
-
-    /* ── Semantic: links ── */
-    --color-link: var(--palette-link);
-    --color-link-hover: var(--palette-link-hover);
-
-    /* ── Semantic: states ── */
-    --color-info: var(--palette-info);
-    --color-success: var(--palette-success);
-    --color-danger: var(--palette-danger);
-
-    /* ── Semantic: neutrals (badges, disabled, etc.) ── */
-    --color-neutral-500: var(--palette-gray-300);
-    --color-neutral-600: var(--palette-gray-400);
-    --color-neutral-700: var(--palette-gray-500);
-    --color-neutral-800: var(--palette-gray-600);
-
-    /* ── Semantic: window buttons ── */
-    --color-window-close: var(--palette-window-close);
-    --color-window-minimize: var(--palette-window-minimize);
-    --color-window-maximize: var(--palette-window-maximize);
-
-    /* ── Semantic: code syntax ── */
-    --code-text: var(--color-text-secondary);
-    --code-comment: var(--palette-code-comment);
-    --code-keyword: var(--palette-code-keyword);
-    --code-variable: var(--palette-code-variable);
-    --code-string: var(--palette-code-string);
-    --code-function: var(--palette-code-function);
-
-    /* ── Elevation / shadows ── */
-    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
-    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.2);
-    --shadow-xl: 0 8px 20px rgba(0, 0, 0, 0.5);
+    --font-base: 'Space Grotesk', 'M PLUS 1', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
 }
 
 * {
@@ -122,16 +21,11 @@
 }
 
 body {
-    background-color: var(--color-bg);
-    font-family: var(--font-mono);
+    background-color: var(--color-main);
+    color: var(--color-sub1);
+    font-family: var(--font-base);
+    font-weight: var(--font-weight-regular);
     overflow-x: hidden;
-}
-
-code,
-pre,
-kbd,
-samp {
-    font-family: var(--font-mono);
 }
 
 button,
@@ -141,6 +35,17 @@ select {
     font-family: inherit;
 }
 
-image {
+img {
     max-width: 100%;
+}
+
+/* Material Symbols Outlined — Google's recommended base rule */
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+    vertical-align: middle;
+    line-height: 1;
 }

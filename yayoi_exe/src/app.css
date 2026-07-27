@@ -1,8 +1,9 @@
 .app-container {
-    background: var(--color-surface-light);
+    background-color: var(--color-main);
     display: flex;
     flex-flow: column;
     width: 100vw;
+    min-height: 100vh;
 }
 
 .header {
@@ -21,26 +22,4 @@
 .page-transition {
     width: 100%;
     will-change: transform, opacity;
-}
-
-.footer {
-    flex: 0 0 5%;
-}
-
-@media screen and (min-width: 767px) {
-    .app-container {
-        background-image: radial-gradient(var(--color-dot-grid) 2px, transparent 2px);
-        background-size: 20px 20px;
-        min-height: 100vh;
-        height: 100%;
-    }
-}
-
-@media screen and (max-width: 479px) {
-    .app-container {
-        background-image: radial-gradient(var(--color-dot-grid) 1px, transparent 1px);
-        background-size: 10px 10px;
-        height: auto;
-        min-height: 100vh;
-    }
 }
