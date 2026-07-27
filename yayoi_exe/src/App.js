@@ -2,16 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Main from './pages/Main';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Projects from './pages/Projects';
 import Career from './pages/Career';
+import Projects from './pages/Projects';
 import './app.css';
 
 // ヘッダーのタブ並び順。移動方向の判定に使う
-const tabOrder = ['/', '/about', '/career', '/projects', '/contact'];
+const tabOrder = ['/', '/career', '/projects'];
 
 // forward = 右のタブへ（中身は左へ流れる）／back = 左のタブへ
 const pageVariants = {
@@ -58,9 +55,7 @@ function AnimatedRoutes() {
                 >
                     <Routes location={location}>
                         <Route path="/" element={<Main />} />
-                        <Route path="/about" element={<About />} />
                         <Route path="/career" element={<Career />} />
-                        <Route path="/contact" element={<Contact />} />
                         <Route path="/projects" element={<Projects />} />
                     </Routes>
                 </motion.div>
@@ -75,7 +70,6 @@ function App() {
             <div className="app-container">
                 <Header className="header" />
                 <AnimatedRoutes />
-                <Footer className="footer" />
             </div>
         </BrowserRouter>
     );

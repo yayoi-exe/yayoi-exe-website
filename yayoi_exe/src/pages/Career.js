@@ -1,7 +1,6 @@
 import React from 'react';
 import '../assets/styles/career.css';
 import educationData from '../data/education.json';
-import EducationCard from '../components/career/EducationCard';
 import Timeline from '../components/career/Timeline';
 
 const Career = () => {
@@ -18,19 +17,6 @@ const Career = () => {
                 <section id="timeline" className="home-section">
                     <h2 className="home-subtitle">経歴</h2>
                     <Timeline items={timelineItems} />
-                </section>
-
-                <section id="education" className="home-section">
-                    <h2 className="home-subtitle">学歴</h2>
-                    {educationData
-                        .filter((data) => data.type === 'education')
-                        .map((edu) => (
-                            <EducationCard
-                                key={edu.id}
-                                {...edu}
-                                year={edu.end ? `${edu.start} - ${edu.end}` : `${edu.start} - 現在`}
-                            />
-                        ))}
                 </section>
             </main>
         </div>
