@@ -1,0 +1,7 @@
+.photo-frame {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    flex-shrink: 0;
+}
