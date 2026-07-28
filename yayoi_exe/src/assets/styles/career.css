@@ -1,8 +1,8 @@
 .career-container {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
-    gap: 4rem;
+    justify-content: space-between;
+    gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
     padding: 4rem 2rem;
