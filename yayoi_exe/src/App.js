@@ -68,7 +68,7 @@ function App() {
     return (
         <BrowserRouter>
             <div className="app-container">
-                <Header className="header" />
+                <Header />
                 <AnimatedRoutes />
             </div>
         </BrowserRouter>

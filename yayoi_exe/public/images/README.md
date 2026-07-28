@@ -13,4 +13,3 @@
 | `SIGGRAPH.png` | The Malleable-Self Experience のサムネイル |
 
 画像が未配置の場合、該当箇所は表示が壊れる（alt テキストのみ）ので注意してください。
-教育カードの画像が無い場合は、リポジトリ直下 `public/placeholder.svg` がフォールバックとして使われます。
