@@ -48,13 +48,13 @@
     font-family: var(--font-base);
     font-weight: var(--font-weight-bold);
     color: var(--color-sub2);
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     margin-bottom: 0.25rem;
 }
 
 .timeline-title {
     font-family: var(--font-base);
-    font-size: 1.25rem;
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
     color: var(--color-sub1);
     margin-bottom: 0.25rem;
@@ -62,7 +62,7 @@
 
 .timeline-description {
     font-family: var(--font-base);
-    font-size: 0.95rem;
+    font-size: var(--font-size-sm);
     font-weight: var(--font-weight-regular);
     color: var(--color-sub2);
     line-height: 1.6;

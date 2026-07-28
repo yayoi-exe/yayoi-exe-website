@@ -11,7 +11,7 @@ const Career = () => {
     return (
         <div className="career-container">
             <section className="career-timeline">
-                <h2 className="career-heading">経歴</h2>
+                <h1 className="career-heading">経歴</h1>
                 <Timeline items={timelineItems} />
             </section>
             <div className="career-photo">

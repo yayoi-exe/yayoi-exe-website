@@ -16,7 +16,7 @@
 .career-heading {
     font-family: var(--font-base);
     font-weight: var(--font-weight-bold);
-    font-size: 2rem;
+    font-size: var(--font-size-2xl);
     color: var(--color-sub1);
     margin-bottom: 2rem;
 }

@@ -20,7 +20,7 @@ const Timeline = ({ items }) => {
                     />
                     <div className="timeline-body">
                         <span className="timeline-year">{item.year}</span>
-                        <h3 className="timeline-title">{item.title}</h3>
+                        <h2 className="timeline-title">{item.title}</h2>
                         <p className="timeline-description">{item.description}</p>
                     </div>
                 </motion.li>

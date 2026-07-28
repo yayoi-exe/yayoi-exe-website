@@ -12,6 +12,14 @@
     --font-base: 'Space Grotesk', 'M PLUS 1', sans-serif;
     --font-weight-regular: 400;
     --font-weight-bold: 700;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-md: 1.1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2.5rem;
+    --font-size-3xl: 3.5rem;
 }
 
 * {
@@ -48,4 +56,8 @@ img {
         'opsz' 24;
     vertical-align: middle;
     line-height: 1;
+}
+
+.material-symbols-outlined {
+    font-size: var(--font-size-md);
 }

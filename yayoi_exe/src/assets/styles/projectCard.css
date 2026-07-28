@@ -18,14 +18,14 @@
 .project-name {
     font-family: var(--font-base);
     font-weight: var(--font-weight-bold);
-    font-size: 1.25rem;
+    font-size: var(--font-size-lg);
     color: var(--color-sub1);
 }
 
 .project-description {
     font-family: var(--font-base);
     font-weight: var(--font-weight-regular);
-    font-size: 0.95rem;
+    font-size: var(--font-size-sm);
     color: var(--color-sub2);
     line-height: 1.5;
 }
@@ -38,7 +38,7 @@
 
 .tech-badge {
     font-family: var(--font-base);
-    font-size: 0.75rem;
+    font-size: var(--font-size-xs);
     font-weight: var(--font-weight-bold);
     color: var(--color-sub1);
     background-color: var(--color-accent-soft);
@@ -58,8 +58,4 @@
     font-family: var(--font-base);
     font-weight: var(--font-weight-bold);
     text-decoration: none;
-}
-
-.button .material-symbols-outlined {
-    font-size: 1.1rem;
 }

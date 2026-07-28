@@ -15,7 +15,7 @@
     white-space: normal;
     font-family: var(--font-base);
     font-weight: var(--font-weight-bold);
-    font-size: 1.5rem;
+    font-size: var(--font-size-xl);
     color: var(--color-sub1);
 }
 
@@ -34,7 +34,7 @@
     white-space: nowrap;
     transition: color 0.25s ease;
     font-family: var(--font-base);
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     margin-right: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 2px;

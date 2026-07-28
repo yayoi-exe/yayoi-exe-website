@@ -47,3 +47,9 @@ test('formats the year range, using 現在 for the ongoing entry', () => {
     expect(result.find((item) => item.id === 3).year).toBe('2024 - 現在');
     expect(result.find((item) => item.id === 1).year).toBe('2017 - 2022');
 });
+
+test('does not mutate the input array or its objects', () => {
+    const original = JSON.parse(JSON.stringify(fixture));
+    buildTimelineItems(fixture);
+    expect(fixture).toEqual(original);
+});

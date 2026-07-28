@@ -38,12 +38,7 @@ const Main = () => {
                     >
                         <GithubIcon />
                     </a>
-                    <a
-                        href={SOCIAL_LINKS.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="LinkedIn"
-                    >
+                    <a href={SOCIAL_LINKS.linkedin} aria-label="LinkedIn">
                         <LinkedinIcon />
                     </a>
                     <a href={`mailto:${SOCIAL_LINKS.email}`} className="home-email">
