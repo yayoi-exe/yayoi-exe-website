@@ -36,6 +36,9 @@ const ProjectCard = ({ project }) => {
                         className="button"
                     >
                         View Link
+                        <span className="material-symbols-outlined" aria-hidden="true">
+                            open_in_new
+                        </span>
                     </a>
                 </div>
             )}

@@ -1,77 +1,65 @@
-.project-thumbnail {
-    width: 300px;
-    /* 固定横幅 */
-    height: 200px;
-    /* 固定縦幅 */
-    object-fit: cover;
-    /* 枠全体を埋める */
-    border-radius: 8px;
-    /* 角丸 (オプション) */
-    display: block;
-    margin: 0 auto;
-    /* 中央揃え */
-}
-
 .project-card {
-    background: var(--color-surface);
-    color: var(--color-text);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: var(--shadow-sm);
-    transition:
-        transform 0.2s,
-        box-shadow 0.2s;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    background-color: var(--color-main);
+    border: 1px solid var(--color-sub2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
 .project-thumbnail {
     width: 100%;
-    height: auto;
+    height: 160px;
+    object-fit: cover;
     border-radius: 8px;
 }
 
 .project-name {
-    font-size: 1.5rem;
-    margin: 10px 0;
+    font-family: var(--font-base);
+    font-weight: var(--font-weight-bold);
+    font-size: 1.25rem;
+    color: var(--color-sub1);
 }
 
 .project-description {
-    font-size: 1rem;
-    margin-bottom: 10px;
+    font-family: var(--font-base);
+    font-weight: var(--font-weight-regular);
+    font-size: 0.95rem;
+    color: var(--color-sub2);
+    line-height: 1.5;
+}
+
+.project-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .tech-badge {
-    background: var(--color-neutral-800);
-    color: var(--color-text);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-    margin-right: 5px;
+    font-family: var(--font-base);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-sub1);
+    background-color: var(--color-accent-soft);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
 }
 
-.project-links .button {
-    display: inline-block;
-    padding: 10px 15px;
-    margin: 5px 0;
-    border-radius: 5px;
+.project-links {
+    margin-top: auto;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-sub1);
+    font-family: var(--font-base);
+    font-weight: var(--font-weight-bold);
     text-decoration: none;
-    color: var(--color-text);
-    background: var(--color-link);
-    transition: background 0.2s;
 }
 
-.project-links .button:hover {
-    background: var(--color-link-hover);
-}
-
-.project-links .button.secondary {
-    background: var(--color-neutral-700);
-}
-
-.project-links .button.secondary:hover {
-    background: var(--color-border);
+.button .material-symbols-outlined {
+    font-size: 1.1rem;
 }
