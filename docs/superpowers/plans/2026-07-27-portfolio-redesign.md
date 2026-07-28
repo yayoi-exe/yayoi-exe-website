@@ -1410,3 +1410,104 @@ git commit -m "Final cleanup: remove remaining media queries/dead tokens/orphane
 ```
 
 If nothing needed fixing, no commit is needed for this task.
+
+---
+
+### Task 10: Fix the tagline decode animation never becoming readable
+
+**Background:** Task 9's manual walkthrough found that the Home page's tagline (`AnimatedTitle` / `useTypewriterEffect`) never visibly resolves to readable text — it stays on scrambled symbols. Root cause, confirmed by reading `yayoi_exe/src/hooks/useTypewriterEffect.js`: the timeline is built as `[[hold, 0.5s] (onComplete: dynamically appends the character-reveal tweens)] -> [[display gap, 1.0s], added synchronously right after the hold tween, BEFORE the timeline ever plays]`. GSAP's default insertion position for tweens added to a timeline from inside a callback that fires *during* playback is relative to the timeline's already-defined children at the moment of the call — which already includes the 1.0s display-gap tween (added synchronously up front). So the character-reveal tweens land *after* the display gap (starting at t=1.5s) instead of *before* it (at t=0.5s) as intended. Net effect: the real, readable text is only on screen for the sliver between the reveal finishing and the *next* cycle's re-scramble — practically imperceptible. This file predates the redesign (last touched in commit `8b4e3ba`, before any Task 1-9 commit) and was explicitly out of scope for Tasks 1-9 ("non-target" list) — this task is a scoped, user-approved exception to fix it now.
+
+**Files:**
+- Modify: `yayoi_exe/src/hooks/useTypewriterEffect.js`
+
+**Interfaces:**
+- Produces: same public contract — `useTypewriterEffect(texts: string[]): RefObject` — no change to how `AnimatedTitle.js` calls it.
+- Consumes: nothing new; `gsap` (already a dependency, used here already).
+
+- [ ] **Step 1: Rewrite `animateText` so the whole timeline is built synchronously in the correct order**
+
+In `yayoi_exe/src/hooks/useTypewriterEffect.js`, replace the `animateText` function body with:
+
+```js
+        const animateText = (text) => {
+            if (isAnimatingRef.current) return;
+            isAnimatingRef.current = true;
+
+            const contentElement = contentRef.current;
+            if (!contentElement) {
+                isAnimatingRef.current = false;
+                return;
+            }
+
+            const currentLength = text.length;
+            const currentText = Array.from(text).map((char) =>
+                char === ' ' ? ' ' : randomSymbol()
+            );
+            const charDuration = TOTAL_DURATION / currentLength;
+
+            const timeline = gsap.timeline({
+                onComplete: () => {
+                    isAnimatingRef.current = false;
+                },
+            });
+
+            contentElement.textContent = currentText.join('');
+
+            timeline.to({}, { duration: SYMBOL_TO_TEXT_DELAY });
+
+            for (let i = 0; i < currentLength; i++) {
+                if (text[i] === ' ') continue;
+
+                timeline.to(
+                    {},
+                    {
+                        duration: charDuration,
+                        onUpdate: () => {
+                            currentText[i] = randomSymbol();
+                            contentElement.textContent = currentText.join('');
+                        },
+                    }
+                );
+
+                timeline.to(
+                    {},
+                    {
+                        duration: 0.01,
+                        onComplete: () => {
+                            currentText[i] = text[i];
+                            contentElement.textContent = currentText.join('');
+                        },
+                    }
+                );
+            }
+
+            timeline.to({}, { duration: DISPLAY_DURATION - SYMBOL_TO_TEXT_DELAY - TOTAL_DURATION });
+        };
+```
+
+The only change is removing the wrapping `onComplete: () => { for (...) {...} }` around the character-reveal loop on the first tween — the loop now runs synchronously at timeline-construction time (same as the trailing display-gap tween already did), so every tween lands in the timeline in the correct order: hold (0.5s) → per-character reveals (~0.5s total) → display gap (1.0s) → done. Total duration is unchanged (still sums to `DISPLAY_DURATION` = 2.0s); only the *order* changes, so the real text is now visible for the full final 1.0s of each cycle instead of a near-zero instant.
+
+- [ ] **Step 2: Verify the app builds**
+
+```bash
+cd yayoi_exe && npm run build
+```
+
+Expected: `Compiled successfully.`
+
+- [ ] **Step 3: Manual browser verification**
+
+There is no existing unit test for this animation timing (it depends on GSAP's real ticker/RAF, not something worth mocking for the first time here). Verify live instead:
+
+```bash
+cd yayoi_exe && npm start
+```
+
+Open `http://localhost:3000`. Watch the tagline under "Taichi Shirakawa" for at least one full 4-second window (two cycles). Confirm: the text visibly scrambles, then resolves into readable text ("Software Engineer & Master's Student") and *stays readable* for roughly a second before the next scramble begins, then cycles to "Let's build something amazing together!" the same way. If you have a way to poll `document.querySelector('.home-tagline').textContent` every ~200ms for 5 seconds, confirm the polled values include at least one exact match to each full phrase (not just scrambled symbols throughout).
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add -A
+git commit -m "Fix tagline decode animation: reorder GSAP timeline so revealed text is actually visible"
+```
