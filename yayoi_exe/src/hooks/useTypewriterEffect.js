@@ -43,39 +43,33 @@ const useTypewriterEffect = (texts) => {
 
             contentElement.textContent = currentText.join('');
 
-            timeline.to(
-                {},
-                {
-                    duration: SYMBOL_TO_TEXT_DELAY,
-                    onComplete: () => {
-                        for (let i = 0; i < currentLength; i++) {
-                            if (text[i] === ' ') continue;
+            timeline.to({}, { duration: SYMBOL_TO_TEXT_DELAY });
 
-                            timeline.to(
-                                {},
-                                {
-                                    duration: charDuration,
-                                    onUpdate: () => {
-                                        currentText[i] = randomSymbol();
-                                        contentElement.textContent = currentText.join('');
-                                    },
-                                }
-                            );
+            for (let i = 0; i < currentLength; i++) {
+                if (text[i] === ' ') continue;
 
-                            timeline.to(
-                                {},
-                                {
-                                    duration: 0.01,
-                                    onComplete: () => {
-                                        currentText[i] = text[i];
-                                        contentElement.textContent = currentText.join('');
-                                    },
-                                }
-                            );
-                        }
-                    },
-                }
-            );
+                timeline.to(
+                    {},
+                    {
+                        duration: charDuration,
+                        onUpdate: () => {
+                            currentText[i] = randomSymbol();
+                            contentElement.textContent = currentText.join('');
+                        },
+                    }
+                );
+
+                timeline.to(
+                    {},
+                    {
+                        duration: 0.01,
+                        onComplete: () => {
+                            currentText[i] = text[i];
+                            contentElement.textContent = currentText.join('');
+                        },
+                    }
+                );
+            }
 
             timeline.to({}, { duration: DISPLAY_DURATION - SYMBOL_TO_TEXT_DELAY - TOTAL_DURATION });
         };
