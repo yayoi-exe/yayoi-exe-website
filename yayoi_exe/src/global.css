@@ -1,48 +1,46 @@
-:root {
-    /* ── Colors ── */
+@import 'tailwindcss';
+
+@theme {
     --color-accent: #f5b700;
     --color-accent-soft: rgba(245, 183, 0, 0.5);
     --color-sub1: #1a1a1a;
     --color-sub2: #71717a;
     --color-main: #fafaf7;
 
-    /* ── Typography ── */
-    --font-base: 'Space Grotesk', 'M PLUS 1', sans-serif;
-    --font-weight-regular: 400;
-    --font-weight-bold: 700;
-    --font-size-xs: 0.75rem;
-    --font-size-sm: 0.875rem;
-    --font-size-base: 1rem;
-    --font-size-lg: 1.25rem;
-    --font-size-xl: 1.5rem;
-    --font-size-3xl: 3.5rem;
+    --font-sans: 'Space Grotesk', 'M PLUS 1', sans-serif;
 
-    /* ── Layout ── */
-    --page-padding-x: clamp(3rem, 12vw, 8rem);
-    --page-padding-y: 4rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.25rem;
+    --text-xl: 1.5rem;
+    --text-3xl: 3.5rem;
+
+    --spacing-page-x: clamp(3rem, 12vw, 8rem);
+    --spacing-page-y: 4rem;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@layer base {
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-body {
-    background-color: var(--color-main);
-    color: var(--color-sub1);
-    font-family: var(--font-base);
-    font-weight: var(--font-weight-regular);
-    overflow-x: hidden;
-}
+    body {
+        @apply bg-main text-sub1 font-sans font-normal overflow-x-hidden;
+    }
 
-button,
-input,
-textarea,
-select {
-    font-family: inherit;
-}
+    button,
+    input,
+    textarea,
+    select {
+        font-family: inherit;
+    }
 
-img {
-    max-width: 100%;
+    img {
+        @apply max-w-full;
+    }
 }

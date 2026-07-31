@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import AnimatedTitle from '../components/AnimatedTitle';
 import PhotoFrame from '../components/PhotoFrame';
 import { ArrowForwardIcon, EmailIcon, GithubIcon, LinkedinIcon } from '../components/icons';
-import '../assets/styles/layout.css';
-import '../assets/styles/main.css';
 
 const TAGLINE_PHRASES = ['Software Engineer', "Engineering What's Next."];
 
@@ -16,32 +14,44 @@ const SOCIAL_LINKS = {
 
 const Main = () => {
     return (
-        <div className="page-split">
-            <div className="home-hero-copy">
-                <h1 className="home-name">Taichi Shirakawa</h1>
+        <div className="flex w-full grow">
+            <div className="flex flex-1 flex-col items-start justify-center gap-6">
+                <h1 className="text-3xl leading-[1.1] font-bold text-sub1">Taichi Shirakawa</h1>
                 <AnimatedTitle phrases={TAGLINE_PHRASES} />
-                <Link to="/projects" className="hero-cta">
+                <Link
+                    to="/projects"
+                    className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-base font-bold text-sub1 no-underline transition-transform duration-200 hover:-translate-y-0.5"
+                >
                     View Projects
                     <ArrowForwardIcon />
                 </Link>
-                <div className="home-socials">
+                <div className="flex items-center gap-4">
                     <a
                         href={SOCIAL_LINKS.github}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub"
+                        className="inline-flex text-sub1"
                     >
                         <GithubIcon />
                     </a>
-                    <a href={SOCIAL_LINKS.linkedin} aria-label="LinkedIn">
+                    <a
+                        href={SOCIAL_LINKS.linkedin}
+                        aria-label="LinkedIn"
+                        className="inline-flex text-sub1"
+                    >
                         <LinkedinIcon />
                     </a>
-                    <a href={`mailto:${SOCIAL_LINKS.email}`} aria-label="Email">
+                    <a
+                        href={`mailto:${SOCIAL_LINKS.email}`}
+                        aria-label="Email"
+                        className="inline-flex text-sub1"
+                    >
                         <EmailIcon />
                     </a>
                 </div>
             </div>
-            <div className="page-split-media">
+            <div className="flex flex-1 items-center justify-center">
                 <PhotoFrame />
             </div>
         </div>

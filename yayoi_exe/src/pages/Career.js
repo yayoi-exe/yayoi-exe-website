@@ -1,6 +1,4 @@
 import React from 'react';
-import '../assets/styles/layout.css';
-import '../assets/styles/career.css';
 import educationData from '../data/education.json';
 import Timeline from '../components/career/Timeline';
 import PhotoFrame from '../components/PhotoFrame';
@@ -10,11 +8,11 @@ const Career = () => {
     const timelineItems = buildTimelineItems(educationData);
 
     return (
-        <div className="page-split career-container">
-            <section className="career-timeline">
+        <div className="flex w-full grow items-center gap-[clamp(2rem,6vw,5rem)]">
+            <section className="max-w-[640px] flex-1 px-[clamp(0.5rem,2vw,1.5rem)]">
                 <Timeline items={timelineItems} />
             </section>
-            <div className="page-split-media">
+            <div className="flex flex-1 items-center justify-center">
                 <PhotoFrame />
             </div>
         </div>

@@ -1,6 +1,6 @@
 # yayoi-exe-website
 
-React (Create React App) で構築した個人ポートフォリオサイトです。
+React + Vite + Tailwind CSS で構築した個人ポートフォリオサイトです。
 
 ## 動作環境
 
@@ -62,6 +62,7 @@ nvm use    # .nvmrc のバージョンを使用
 
     ``` bash
     npm start
+    # または npm run dev
     ```
 
 - 本番用ビルド
@@ -80,16 +81,19 @@ nvm use    # .nvmrc のバージョンを使用
 
 ``` text
 yayoi_exe/
-├── public/            # 静的アセット（index.html, fonts, images）
+├── index.html         # Vite エントリ HTML
+├── public/            # 静的アセット（favicon, fonts, images）
 │   ├── fonts/
-│   └── images/        # サイトで表示する画像
+│   └── images/
 ├── src/
-│   ├── assets/styles/ # 機能ごとの CSS
 │   ├── components/    # 再利用コンポーネント（career/ 配下に経歴系）
 │   ├── data/          # 表示データ（projects / education）
-│   ├── pages/         # 各ページ（Main, About, Career, Contact, Projects）
+│   ├── pages/         # 各ページ（Main, Career, Projects）
+│   ├── global.css     # Tailwind + デザイントークン
+│   ├── leftover.css   # utility 化しにくい少数ルール
 │   ├── App.js         # ルーティング定義
 │   └── index.js       # エントリポイント
+├── vite.config.js
 └── package.json
 ```
 
@@ -97,9 +101,10 @@ yayoi_exe/
 
 | コマンド | 説明 |
 | --- | --- |
-| `npm start` | 開発サーバーを起動 |
-| `npm run build` | 本番用の最適化ビルドを生成 |
-| `npm test` | テストを実行 |
+| `npm start` / `npm run dev` | Vite 開発サーバーを起動 |
+| `npm run build` | 本番用の最適化ビルドを `build/` に生成 |
+| `npm run preview` | 本番ビルドのプレビュー |
+| `npm test` | Vitest でテストを実行 |
 | `npm run lint` | ESLint によるコードチェック |
 | `npm run format` | Prettier による自動整形 |
 | `npm run format:check` | 整形済みかを確認（変更なし） |
@@ -113,7 +118,7 @@ yayoi_exe/
 
 ## 環境変数
 
-現時点では環境変数は不要です。将来バックエンドや CMS を接続する場合は `.env.local` を作成し、Create React App の仕様どおり `REACT_APP_` 接頭辞を付けてください（`.env.local` は Git 管理外）。
+現時点では環境変数は不要です。将来バックエンドや CMS を接続する場合は `.env.local` を作成し、Vite の仕様どおり `VITE_` 接頭辞を付けてください（`.env.local` は Git 管理外）。コード側では `import.meta.env.VITE_*` で参照します。
 
 ## データ管理と CMS 化（将来の拡張）
 
@@ -123,7 +128,7 @@ Projects / Career のコンテンツは `src/data/projects.json` と `src/data/e
 移行手順の概要:
 
 1. CMS 側でスキーマを作成（`projects.json` / `education.json` のフィールドに合わせる）。
-2. `.env.local` に `REACT_APP_CMS_API_BASE` / `REACT_APP_CMS_API_KEY` を設定する。
+2. `.env.local` に `VITE_CMS_API_BASE` / `VITE_CMS_API_KEY` を設定する。
 3. ページ側で JSON import を `fetch` に置き換える。例（`Projects.js`）:
 
 ``` jsx
@@ -132,8 +137,8 @@ import { useEffect, useState } from 'react';
 const [projects, setProjects] = useState([]);
 
 useEffect(() => {
-    fetch(`${process.env.REACT_APP_CMS_API_BASE}/projects`, {
-        headers: { 'X-API-KEY': process.env.REACT_APP_CMS_API_KEY },
+    fetch(`${import.meta.env.VITE_CMS_API_BASE}/projects`, {
+        headers: { 'X-API-KEY': import.meta.env.VITE_CMS_API_KEY },
     })
         .then((res) => res.json())
         .then((data) => setProjects(data.contents))

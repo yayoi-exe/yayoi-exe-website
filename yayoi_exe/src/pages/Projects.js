@@ -1,12 +1,11 @@
 import React from 'react';
 import ProjectCard from '../components/ProjectCard';
 import projectsData from '../data/projects.json';
-import '../assets/styles/projects.css';
 
 const Projects = () => {
     return (
-        <div className="projects-container">
-            <div className="projects-grid">
+        <div className="flex w-full grow items-center justify-center">
+            <div className="grid w-full grid-cols-3 gap-8">
                 {projectsData.map((project) => (
                     <ProjectCard key={project.id} project={project} />
                 ))}

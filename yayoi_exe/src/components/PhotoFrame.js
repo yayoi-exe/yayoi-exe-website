@@ -1,6 +1,7 @@
 import React from 'react';
-import '../assets/styles/photoFrame.css';
 
-const PhotoFrame = () => <div className="photo-frame" aria-hidden="true" />;
+const PhotoFrame = () => (
+    <div className="h-80 w-80 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+);
 
 export default PhotoFrame;

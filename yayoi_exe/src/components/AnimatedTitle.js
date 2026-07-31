@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import useTypewriterEffect from '../hooks/useTypewriterEffect';
-import '../assets/styles/animatedTitle.css';
 
 const AnimatedTitle = ({ phrases }) => {
     const contentRef = useTypewriterEffect(phrases);
 
-    return <p className="home-tagline" ref={contentRef}></p>;
+    return (
+        <p
+            className="inline-block h-[1.4em] overflow-hidden align-top font-sans text-xl leading-[1.4] font-normal whitespace-pre text-sub2"
+            style={{ boxSizing: 'content-box' }}
+            ref={contentRef}
+        ></p>
+    );
 };
 
 AnimatedTitle.propTypes = {

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import '../assets/styles/nodeMap.css';
 import {
     createNodes,
     createRng,
@@ -70,7 +69,13 @@ const NodeMapBackground = () => {
         };
     }, []);
 
-    return <canvas ref={canvasRef} className="node-map-background" aria-hidden="true" />;
+    return (
+        <canvas
+            ref={canvasRef}
+            className="pointer-events-none fixed inset-0 z-0 block h-full w-full"
+            aria-hidden="true"
+        />
+    );
 };
 
 export default NodeMapBackground;

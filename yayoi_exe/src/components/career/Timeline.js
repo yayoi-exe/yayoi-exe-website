@@ -1,27 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import '../../assets/styles/timeline.css';
 
 const Timeline = ({ items }) => {
     return (
-        <ol className="timeline-list">
+        <ol className="timeline-list relative flex list-none flex-col gap-[clamp(3.5rem,9vh,6rem)] py-[clamp(1rem,4vh,3rem)] pl-2.5">
             {items.map((item, index) => (
                 <motion.li
                     key={item.id}
-                    className="timeline-row"
+                    className="relative z-[1] flex items-start gap-8"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.35, delay: 0.15 + index * 0.05 }}
                 >
                     <span
-                        className={`timeline-dot ${item.isCurrent ? 'is-current' : ''}`}
+                        className={`mt-1 h-5 w-5 shrink-0 rounded-full ${
+                            item.isCurrent ? 'bg-accent' : 'bg-sub2'
+                        }`}
                         aria-hidden="true"
                     />
-                    <div className="timeline-body">
-                        <span className="timeline-year">{item.year}</span>
-                        <h2 className="timeline-title">{item.title}</h2>
-                        <p className="timeline-description">{item.description}</p>
+                    <div className="flex-1">
+                        <span className="mb-2 block font-sans text-base font-bold text-sub2">
+                            {item.year}
+                        </span>
+                        <h2 className="mb-2 font-sans text-xl font-bold text-sub1">{item.title}</h2>
+                        <p className="font-sans text-base leading-relaxed font-normal text-sub2">
+                            {item.description}
+                        </p>
                     </div>
                 </motion.li>
             ))}

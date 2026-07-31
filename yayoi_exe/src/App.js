@@ -7,7 +7,6 @@ import Main from './pages/Main';
 import Career from './pages/Career';
 import Projects from './pages/Projects';
 import { TAB_ORDER } from './routes';
-import './app.css';
 
 // 縦一枚帯: 上から Home → Career → Projects
 // slide > 0 進む: 旧は上へ抜け、新は下から
@@ -46,11 +45,11 @@ function AnimatedRoutes() {
     }, [location]);
 
     return (
-        <div className="main">
+        <div className="relative z-[1] min-h-0 flex-1 overflow-hidden">
             <AnimatePresence mode="sync" custom={slide} initial={false}>
                 <motion.div
                     key={displayLocation.key}
-                    className="page-transition"
+                    className="absolute inset-0 flex flex-col overflow-x-hidden overflow-y-auto px-page-x py-page-y will-change-transform"
                     custom={slide}
                     variants={pageVariants}
                     initial="enter"
@@ -72,9 +71,11 @@ function AnimatedRoutes() {
 function App() {
     return (
         <BrowserRouter>
-            <div className="app-container">
+            <div className="relative flex h-screen w-screen flex-col overflow-hidden bg-main">
                 <NodeMapBackground />
-                <Header />
+                <div className="relative z-[1] shrink-0">
+                    <Header />
+                </div>
                 <AnimatedRoutes />
             </div>
         </BrowserRouter>
