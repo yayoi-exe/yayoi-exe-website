@@ -67,27 +67,29 @@ const useTypewriterEffect = (texts) => {
         paint(padTo(texts[0], maxLen));
 
         const scramblePrevious = (prevText, timeline) => {
-            let currentText = [];
+            // オブジェクトに載せて再代入を避ける（ループ内 onComplete の no-loop-func 対策）
+            const state = { chars: [] };
 
             timeline.to(
                 {},
                 {
                     duration: 0.01,
                     onComplete: () => {
-                        currentText = slots.map((slot) => slot.textContent || ' ');
+                        state.chars = slots.map((slot) => slot.textContent || ' ');
                     },
                 }
             );
 
             for (let i = prevText.length - 1; i >= 0; i -= 1) {
-                if (prevText[i] === ' ') {
+                const charIndex = i;
+                if (prevText[charIndex] === ' ') {
                     timeline.to(
                         {},
                         {
                             duration: CHAR_ANIMATION_DURATION,
                             onComplete: () => {
-                                currentText[i] = ' ';
-                                paint(currentText);
+                                state.chars[charIndex] = ' ';
+                                paint(state.chars);
                             },
                         }
                     );
@@ -99,8 +101,8 @@ const useTypewriterEffect = (texts) => {
                     {
                         duration: CHAR_ANIMATION_DURATION,
                         onComplete: () => {
-                            currentText[i] = randomSymbol();
-                            paint(currentText);
+                            state.chars[charIndex] = randomSymbol();
+                            paint(state.chars);
                         },
                     }
                 );
@@ -108,26 +110,28 @@ const useTypewriterEffect = (texts) => {
         };
 
         const revealNext = (nextText, timeline) => {
-            let currentText = [];
+            const state = { chars: [] };
 
             timeline.to(
                 {},
                 {
                     duration: 0.01,
                     onComplete: () => {
-                        currentText = slots.map((slot) => slot.textContent || ' ');
+                        state.chars = slots.map((slot) => slot.textContent || ' ');
                     },
                 }
             );
 
             for (let i = 0; i < maxLen; i += 1) {
+                const charIndex = i;
                 timeline.to(
                     {},
                     {
                         duration: CHAR_ANIMATION_DURATION,
                         onComplete: () => {
-                            currentText[i] = i < nextText.length ? nextText[i] : ' ';
-                            paint(currentText);
+                            state.chars[charIndex] =
+                                charIndex < nextText.length ? nextText[charIndex] : ' ';
+                            paint(state.chars);
                         },
                     }
                 );

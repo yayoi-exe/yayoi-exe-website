@@ -6,17 +6,16 @@ import NodeMapBackground from './components/NodeMapBackground';
 import Main from './pages/Main';
 import Career from './pages/Career';
 import Projects from './pages/Projects';
+import { TAB_ORDER } from './routes';
 import './app.css';
 
 // 縦一枚帯: 上から Home → Career → Projects
 // slide > 0 進む: 旧は上へ抜け、新は下から
 // slide < 0 戻る: 旧は下へ流れ、新は上から
 // 退場向きは AnimatePresence の custom で渡す（exit props はマウント時に固定されるため）
-const tabOrder = ['/', '/career', '/projects'];
-
 function getSlide(fromPath, toPath) {
-    const from = tabOrder.indexOf(fromPath);
-    const to = tabOrder.indexOf(toPath);
+    const from = TAB_ORDER.indexOf(fromPath);
+    const to = TAB_ORDER.indexOf(toPath);
     if (from === -1 || to === -1) return 1;
     return to - from;
 }

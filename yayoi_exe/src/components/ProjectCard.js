@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OpenInNewIcon from './icons/OpenInNewIcon';
+import { OpenInNewIcon } from './icons';
 import '../assets/styles/projectCard.css';
 
 const ProjectCard = ({ project }) => {

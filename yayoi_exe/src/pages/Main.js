@@ -2,10 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedTitle from '../components/AnimatedTitle';
 import PhotoFrame from '../components/PhotoFrame';
-import GithubIcon from '../components/icons/GithubIcon';
-import LinkedinIcon from '../components/icons/LinkedinIcon';
-import EmailIcon from '../components/icons/EmailIcon';
-import ArrowForwardIcon from '../components/icons/ArrowForwardIcon';
+import { ArrowForwardIcon, EmailIcon, GithubIcon, LinkedinIcon } from '../components/icons';
+import '../assets/styles/layout.css';
 import '../assets/styles/main.css';
 
 const TAGLINE_PHRASES = ['Software Engineer', "Engineering What's Next."];
@@ -18,7 +16,7 @@ const SOCIAL_LINKS = {
 
 const Main = () => {
     return (
-        <div className="home-hero">
+        <div className="page-split">
             <div className="home-hero-copy">
                 <h1 className="home-name">Taichi Shirakawa</h1>
                 <AnimatedTitle phrases={TAGLINE_PHRASES} />
@@ -43,7 +41,7 @@ const Main = () => {
                     </a>
                 </div>
             </div>
-            <div className="home-hero-photo">
+            <div className="page-split-media">
                 <PhotoFrame />
             </div>
         </div>
