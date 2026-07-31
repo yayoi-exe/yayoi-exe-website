@@ -2,6 +2,7 @@
     "name": "yayoi_exe",
     "version": "0.1.0",
     "private": true,
+    "type": "module",
     "engines": {
         "node": ">=18 <=22",
         "npm": ">=9"
@@ -15,14 +16,15 @@
         "prop-types": "^15.8.1",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
-        "react-router-dom": "^6.28.0",
-        "react-scripts": "^5.0.1"
+        "react-router-dom": "^6.28.0"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
+        "start": "vite",
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "test": "vitest run",
+        "test:watch": "vitest",
         "lint": "eslint \"src/**/*.{js,jsx}\"",
         "format": "prettier --write \"src/**/*.{js,jsx,json,css}\"",
         "format:check": "prettier --check \"src/**/*.{js,jsx,json,css}\"",
@@ -58,9 +60,15 @@
     },
     "devDependencies": {
         "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+        "@tailwindcss/vite": "^4.1.11",
+        "@vitejs/plugin-react": "^4.7.0",
         "eslint-config-prettier": "^10.1.8",
         "husky": "^9.1.7",
+        "jsdom": "^26.1.0",
         "lint-staged": "^16.4.0",
-        "prettier": "^3.9.4"
+        "prettier": "^3.9.4",
+        "tailwindcss": "^4.1.11",
+        "vite": "^6.3.5",
+        "vitest": "^3.2.4"
     }
 }
