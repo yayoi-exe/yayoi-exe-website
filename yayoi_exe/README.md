@@ -113,8 +113,7 @@ yayoi_exe/
 
 ## 環境変数
 
-- `.env.example` をコピーして `.env.local` を作成し、必要な値を設定します（`.env.local` は Git 管理外）。
-- Create React App の仕様上、ブラウザに公開される変数は `REACT_APP_` 接頭辞が必要です。
+現時点では環境変数は不要です。将来バックエンドや CMS を接続する場合は `.env.local` を作成し、Create React App の仕様どおり `REACT_APP_` 接頭辞を付けてください（`.env.local` は Git 管理外）。
 
 ## データ管理と CMS 化（将来の拡張）
 
@@ -124,7 +123,7 @@ Projects / Career のコンテンツは `src/data/projects.json` と `src/data/e
 移行手順の概要:
 
 1. CMS 側でスキーマを作成（`projects.json` / `education.json` のフィールドに合わせる）。
-2. `.env.local` に接続情報を設定（`.env.example` の `REACT_APP_CMS_API_BASE` / `REACT_APP_CMS_API_KEY`）。
+2. `.env.local` に `REACT_APP_CMS_API_BASE` / `REACT_APP_CMS_API_KEY` を設定する。
 3. ページ側で JSON import を `fetch` に置き換える。例（`Projects.js`）:
 
 ``` jsx
