@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import OpenInNewIcon from './icons/OpenInNewIcon';
 import '../assets/styles/projectCard.css';
 
 const ProjectCard = ({ project }) => {
@@ -36,9 +37,7 @@ const ProjectCard = ({ project }) => {
                         className="button"
                     >
                         View Link
-                        <span className="material-symbols-outlined" aria-hidden="true">
-                            open_in_new
-                        </span>
+                        <OpenInNewIcon />
                     </a>
                 </div>
             )}

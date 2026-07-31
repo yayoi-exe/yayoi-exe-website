@@ -1,19 +1,25 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
-const SYMBOLS = '_!&/?%=@';
-const TOTAL_DURATION = 0.5;
-const SYMBOL_TO_TEXT_DELAY = 0.5;
-const PAUSE_AFTER_REVEAL = 1.0;
+// Narrow glyphs — width further constrained via .is-scramble CSS
+const SYMBOLS = '_-+|=*#~';
+const SYMBOL_SET = new Set(SYMBOLS.split(''));
+const CHAR_ANIMATION_DURATION = 0.06;
+const PAUSE_AFTER_REVEAL = 2.8;
+const PAUSE_AFTER_SCRAMBLE = 0.6;
 
 const randomSymbol = () => SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
 
+const padTo = (text, length) => {
+    const chars = Array.from(text);
+    while (chars.length < length) chars.push(' ');
+    return chars.slice(0, length);
+};
+
 /**
- * Cycles through the given texts, animating each one with a "scrambling symbols"
- * typewriter effect. Returns a ref that must be attached to the text container.
- * Each phrase's animation is chained off the previous one's completion (not a
- * fixed-period timer), so the cycle is always exactly as long as the animation
- * actually takes and no phrase is ever skipped.
+ * Flow per cycle:
+ *   readable → scramble R→L (prev chars only) → hold → reveal L→R into next
+ * Readable letters keep proportional width; scramble glyphs are width-capped in CSS.
  */
 const useTypewriterEffect = (texts) => {
     const contentRef = useRef(null);
@@ -22,74 +28,144 @@ const useTypewriterEffect = (texts) => {
     useEffect(() => {
         if (!texts || texts.length === 0) return undefined;
 
+        const el = contentRef.current;
+        if (!el) return undefined;
+
+        const maxLen = Math.max(...texts.map((t) => t.length));
         let index = 0;
         let cancelled = false;
+        let slots = [];
 
-        const animateText = (text, onDone) => {
-            const contentElement = contentRef.current;
-            if (!contentElement) {
-                onDone();
-                return;
-            }
-
-            const currentLength = text.length;
-            const currentText = Array.from(text).map((char) =>
-                char === ' ' ? ' ' : randomSymbol()
-            );
-            const charDuration = TOTAL_DURATION / currentLength;
-
-            const timeline = gsap.timeline({ onComplete: onDone });
-            timelineRef.current = timeline;
-
-            contentElement.textContent = currentText.join('');
-
-            timeline.to({}, { duration: SYMBOL_TO_TEXT_DELAY });
-
-            for (let i = 0; i < currentLength; i++) {
-                if (text[i] === ' ') continue;
-
-                timeline.to(
-                    {},
-                    {
-                        duration: charDuration,
-                        onUpdate: () => {
-                            currentText[i] = randomSymbol();
-                            contentElement.textContent = currentText.join('');
-                        },
-                    }
-                );
-
-                timeline.to(
-                    {},
-                    {
-                        duration: 0.01,
-                        onComplete: () => {
-                            currentText[i] = text[i];
-                            contentElement.textContent = currentText.join('');
-                        },
-                    }
-                );
-            }
-
-            timeline.to({}, { duration: PAUSE_AFTER_REVEAL });
-        };
-
-        const cycle = () => {
-            if (cancelled) return;
-            animateText(texts[index], () => {
-                if (cancelled) return;
-                index = (index + 1) % texts.length;
-                cycle();
+        const ensureSlots = () => {
+            el.textContent = '';
+            slots = Array.from({ length: maxLen }, () => {
+                const span = document.createElement('span');
+                span.className = 'home-tagline-char';
+                span.textContent = ' ';
+                el.appendChild(span);
+                return span;
             });
         };
 
-        cycle();
+        const paint = (chars) => {
+            for (let i = 0; i < maxLen; i += 1) {
+                const ch = chars[i] ?? ' ';
+                slots[i].textContent = ch;
+                slots[i].classList.toggle('is-scramble', SYMBOL_SET.has(ch));
+            }
+        };
+
+        ensureSlots();
+
+        // Lock box width to the longest readable phrase (not scramble glyphs)
+        const longest = texts.reduce((a, b) => (a.length >= b.length ? a : b));
+        paint(padTo(longest, maxLen));
+        const lockedWidth = el.offsetWidth;
+        el.style.width = `${lockedWidth}px`;
+        el.style.minWidth = `${lockedWidth}px`;
+
+        paint(padTo(texts[0], maxLen));
+
+        const scramblePrevious = (prevText, timeline) => {
+            let currentText = [];
+
+            timeline.to(
+                {},
+                {
+                    duration: 0.01,
+                    onComplete: () => {
+                        currentText = slots.map((slot) => slot.textContent || ' ');
+                    },
+                }
+            );
+
+            for (let i = prevText.length - 1; i >= 0; i -= 1) {
+                if (prevText[i] === ' ') {
+                    timeline.to(
+                        {},
+                        {
+                            duration: CHAR_ANIMATION_DURATION,
+                            onComplete: () => {
+                                currentText[i] = ' ';
+                                paint(currentText);
+                            },
+                        }
+                    );
+                    continue;
+                }
+
+                timeline.to(
+                    {},
+                    {
+                        duration: CHAR_ANIMATION_DURATION,
+                        onComplete: () => {
+                            currentText[i] = randomSymbol();
+                            paint(currentText);
+                        },
+                    }
+                );
+            }
+        };
+
+        const revealNext = (nextText, timeline) => {
+            let currentText = [];
+
+            timeline.to(
+                {},
+                {
+                    duration: 0.01,
+                    onComplete: () => {
+                        currentText = slots.map((slot) => slot.textContent || ' ');
+                    },
+                }
+            );
+
+            for (let i = 0; i < maxLen; i += 1) {
+                timeline.to(
+                    {},
+                    {
+                        duration: CHAR_ANIMATION_DURATION,
+                        onComplete: () => {
+                            currentText[i] = i < nextText.length ? nextText[i] : ' ';
+                            paint(currentText);
+                        },
+                    }
+                );
+            }
+        };
+
+        const runCycle = () => {
+            if (cancelled) return;
+
+            const current = texts[index];
+            const nextIndex = (index + 1) % texts.length;
+            const next = texts[nextIndex];
+
+            const timeline = gsap.timeline({
+                onComplete: () => {
+                    if (cancelled) return;
+                    index = nextIndex;
+                    runCycle();
+                },
+            });
+            timelineRef.current = timeline;
+
+            timeline.to({}, { duration: PAUSE_AFTER_REVEAL });
+            scramblePrevious(current, timeline);
+            timeline.to({}, { duration: PAUSE_AFTER_SCRAMBLE });
+            revealNext(next, timeline);
+        };
+
+        runCycle();
 
         return () => {
             cancelled = true;
             if (timelineRef.current) {
                 timelineRef.current.kill();
             }
+            el.style.width = '';
+            el.style.minWidth = '';
+            el.textContent = '';
         };
     }, [texts]);
 

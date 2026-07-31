@@ -2,12 +2,13 @@
     background-color: var(--color-main);
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     color: var(--color-sub1);
     flex-wrap: nowrap;
     overflow: hidden;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem 0.5rem 1.75rem;
+    position: relative;
 }
 
 .tab-title {
@@ -17,14 +18,14 @@
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-xl);
     color: var(--color-sub1);
+    position: relative;
+    z-index: 1;
 }
 
 .header-tab {
     color: var(--color-sub2);
     background-color: transparent;
     cursor: pointer;
-    position: relative;
-    z-index: 1;
     text-decoration: none;
     display: flex;
     justify-content: center;
@@ -36,64 +37,29 @@
     font-family: var(--font-base);
     font-size: var(--font-size-base);
     margin-right: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 2px;
-    border-top: 4px solid transparent;
-    width: 120px;
+    padding: 0.5rem 0;
+    width: 140px;
+}
+
+.header-tab:last-child {
+    margin-right: 0;
 }
 
 .header-tab.active {
-    color: var(--color-sub1);
+    color: var(--color-accent);
     font-weight: var(--font-weight-bold);
 }
 
 .header-tab:hover {
-    color: var(--color-sub1);
+    color: var(--color-accent);
 }
 
 .nav-tabs {
-    position: relative;
     display: flex;
     flex-wrap: nowrap;
     flex-shrink: 0;
     white-space: nowrap;
-    overflow: hidden;
-}
-
-/* アクティブタブを表す共有スライダー。DOM座標に合わせて滑らかに移動する */
-.nav-tab-slider {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 0;
-    background-color: var(--color-accent-soft);
-    opacity: 0;
-    pointer-events: none;
-    will-change: transform, width;
-    border-radius: 2px;
-    border-top: 4px solid var(--color-accent);
-}
-
-.nav-tab-slider.is-visible {
-    opacity: 1;
-}
-
-/* 初回描画以降のみアニメーション。ウィンドウ移動のようにヌルッと追従させる */
-.nav-tab-slider.is-animated {
-    transition:
-        transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-        width 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.2s ease;
-}
-
-/* ホバー時はスライダーの上に薄いハイライトを重ねる */
-.header-tab:not(.active):hover::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background-color: var(--color-accent-soft);
-    opacity: 0.5;
-    border-radius: inherit;
+    left: 50%;
+    transform: translateX(-50%);
 }

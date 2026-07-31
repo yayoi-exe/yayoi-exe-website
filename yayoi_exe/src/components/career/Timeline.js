@@ -10,9 +10,9 @@ const Timeline = ({ items }) => {
                 <motion.li
                     key={item.id}
                     className="timeline-row"
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.08 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.35, delay: 0.15 + index * 0.05 }}
                 >
                     <span
                         className={`timeline-dot ${item.isCurrent ? 'is-current' : ''}`}

@@ -1,59 +1,65 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Header from './components/Header';
+import NodeMapBackground from './components/NodeMapBackground';
 import Main from './pages/Main';
 import Career from './pages/Career';
 import Projects from './pages/Projects';
 import './app.css';
 
-// ヘッダーのタブ並び順。移動方向の判定に使う
+// 縦一枚帯: 上から Home → Career → Projects
+// slide > 0 進む: 旧は上へ抜け、新は下から
+// slide < 0 戻る: 旧は下へ流れ、新は上から
+// 退場向きは AnimatePresence の custom で渡す（exit props はマウント時に固定されるため）
 const tabOrder = ['/', '/career', '/projects'];
 
-// forward = 右のタブへ（中身は左へ流れる）／back = 左のタブへ
+function getSlide(fromPath, toPath) {
+    const from = tabOrder.indexOf(fromPath);
+    const to = tabOrder.indexOf(toPath);
+    if (from === -1 || to === -1) return 1;
+    return to - from;
+}
+
 const pageVariants = {
-    enter: (direction) => ({
-        x: direction === 'forward' ? '75%' : '-75%',
-        opacity: 0,
-    }),
-    center: {
-        x: 0,
-        opacity: 1,
-    },
-    exit: (direction) => ({
-        x: direction === 'forward' ? '-75%' : '75%',
-        opacity: 0,
-    }),
+    enter: (slide) => ({ y: `${slide * 100}%` }),
+    center: { y: 0 },
+    exit: (slide) => ({ y: `${-slide * 100}%` }),
 };
 
-// 旧ページと新ページを同時にスライドさせるページ遷移
 function AnimatedRoutes() {
     const location = useLocation();
     const prevPathRef = useRef(location.pathname);
+    const [{ displayLocation, slide }, setRoute] = useState({
+        displayLocation: location,
+        slide: 1,
+    });
 
-    const prevIndex = tabOrder.indexOf(prevPathRef.current);
-    const currIndex = tabOrder.indexOf(location.pathname);
-    const direction =
-        prevIndex !== -1 && currIndex !== -1 && currIndex < prevIndex ? 'back' : 'forward';
+    useLayoutEffect(() => {
+        const prevPath = prevPathRef.current;
+        if (location.pathname === prevPath) return;
 
-    useEffect(() => {
         prevPathRef.current = location.pathname;
-    }, [location.pathname]);
+        setRoute({
+            displayLocation: location,
+            slide: getSlide(prevPath, location.pathname),
+        });
+    }, [location]);
 
     return (
         <div className="main">
-            <AnimatePresence mode="popLayout" custom={direction} initial={false}>
+            <AnimatePresence mode="sync" custom={slide} initial={false}>
                 <motion.div
-                    key={location.pathname}
+                    key={displayLocation.key}
                     className="page-transition"
-                    custom={direction}
+                    custom={slide}
                     variants={pageVariants}
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
                 >
-                    <Routes location={location}>
+                    <Routes location={displayLocation}>
                         <Route path="/" element={<Main />} />
                         <Route path="/career" element={<Career />} />
                         <Route path="/projects" element={<Projects />} />
@@ -68,6 +74,7 @@ function App() {
     return (
         <BrowserRouter>
             <div className="app-container">
+                <NodeMapBackground />
                 <Header />
                 <AnimatedRoutes />
             </div>

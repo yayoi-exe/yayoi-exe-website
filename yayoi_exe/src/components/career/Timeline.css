@@ -3,16 +3,17 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: clamp(3.5rem, 9vh, 6rem);
     padding-left: 10px;
+    padding-block: clamp(1rem, 4vh, 3rem);
 }
 
 .timeline-list::before {
     content: '';
     position: absolute;
     left: 20px;
-    top: 14px;
-    bottom: 14px;
+    top: calc(14px + clamp(1rem, 4vh, 3rem));
+    bottom: calc(14px + clamp(1rem, 4vh, 3rem));
     width: 2px;
     background-color: var(--color-sub2);
     opacity: 0.5;
@@ -21,7 +22,7 @@
 .timeline-row {
     display: flex;
     align-items: flex-start;
-    gap: 1.5rem;
+    gap: 2rem;
     position: relative;
     z-index: 1;
 }
@@ -48,21 +49,21 @@
     font-family: var(--font-base);
     font-weight: var(--font-weight-bold);
     color: var(--color-sub2);
-    font-size: var(--font-size-sm);
-    margin-bottom: 0.25rem;
+    font-size: var(--font-size-base);
+    margin-bottom: 0.5rem;
 }
 
 .timeline-title {
     font-family: var(--font-base);
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
     color: var(--color-sub1);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
 }
 
 .timeline-description {
     font-family: var(--font-base);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     font-weight: var(--font-weight-regular);
     color: var(--color-sub2);
     line-height: 1.6;
