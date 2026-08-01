@@ -26,7 +26,13 @@ export default defineConfig({
         emptyOutDir: true,
     },
     server: {
+        host: true,
         port: 3000,
+        watch: {
+            // Docker Desktop (macOS) では inotify が届かないことがあるため polling を有効化
+            usePolling: true,
+            interval: 300,
+        },
     },
     test: {
         globals: true,

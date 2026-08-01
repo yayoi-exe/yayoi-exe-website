@@ -58,7 +58,17 @@ nvm use    # .nvmrc のバージョンを使用
 
 ## プロジェクトの起動
 
-- 開発サーバーの起動
+よく使う Docker コマンドは `make help` でも確認できます。
+
+- Docker で開発サーバーを起動（ホットリロードあり）
+
+    ``` bash
+    make dev-up
+    ```
+
+    ブラウザで `http://localhost:3000` を開きます。本番用の nginx 配信とは別構成です。
+
+- ローカルで開発する場合（任意）
 
     ``` bash
     npm start
@@ -77,6 +87,16 @@ nvm use    # .nvmrc のバージョンを使用
     npm test
     ```
 
+## Makefile ターゲット
+
+| コマンド | 内容 |
+| --- | --- |
+| `make help` | ターゲット一覧 |
+| `make dev-up` | Docker 開発（HMR・`:3000`） |
+| `make prod-up` | Docker 本番相当（nginx・`:8080`） |
+| `make dev-down` / `make prod-down` | 各コンテナの停止 |
+| `make dev-logs` / `make prod-logs` | 各コンテナのログ |
+
 ## ディレクトリ構成
 
 ``` text
@@ -94,6 +114,7 @@ yayoi_exe/
 │   ├── App.js         # ルーティング定義
 │   └── index.js       # エントリポイント
 ├── vite.config.js
+├── Makefile           # Docker 用ショートカット
 └── package.json
 ```
 
@@ -154,11 +175,14 @@ JSON とスキーマ（`id` / 任意項目は空配列で統一）を揃えて�
 
 ``` bash
 # イメージのビルドと起動
-docker compose up --build
+make prod-up
+# または: docker compose up --build
 
 # ブラウザで http://localhost:8080 を開く
 ```
 
 - `Dockerfile`: `node:20-alpine` でビルドし、`nginx:alpine` で静的配信する2ステージ構成。
+- `Dockerfile.dev` / `docker-compose.dev.yml`: Vite 開発サーバー（ホットリロード）。`make dev-up` で起動。
 - `nginx.conf`: react-router 対応のため未知パスを `index.html` にフォールバック。
 - `docker-compose.yml`: ホストの `8080` をコンテナの `80` に割り当て。
+- `Makefile`: Docker の起動・停止・ログをラップ。
