@@ -7,7 +7,7 @@ export function buildTimelineItems(educationData) {
                 id: data.id,
                 title: data.type === 'education' ? data.university : data.company,
                 description: data.type === 'education' ? data.degree : data.title,
-                year: isCurrent ? `${data.start} - 現在` : `${data.start} - ${data.end}`,
+                year: isCurrent ? `${data.start} - Present` : `${data.start} - ${data.end}`,
                 isCurrent,
             };
         });

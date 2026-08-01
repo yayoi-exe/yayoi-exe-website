@@ -40,8 +40,8 @@
     {
         "id": 3,
         "type": "education",
-        "university": "慶應義塾大学大学院",
-        "degree": "メディアデザイン研究科",
+        "university": "Keio University",
+        "degree": "Graduate School of Media Design",
         "start": 2024,
         "end": 2026,
         "research": "__",
@@ -52,8 +52,8 @@
     {
         "id": 4,
         "type": "work",
-        "company": "楽天グループ株式会社",
-        "title": "アプリケーションエンジニア",
+        "company": "Rakuten Group, Inc.",
+        "title": "Application Engineer",
         "start": 2026,
         "end": null
     }

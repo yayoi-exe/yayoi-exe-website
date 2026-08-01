@@ -16,37 +16,43 @@ const ProjectCard = ({ project }) => {
     const { name, description, thumbnail, techStack, webLink } = useProjectCard(project);
 
     return (
-        <div className="flex flex-col gap-3 rounded-xl border border-sub2 bg-main p-6">
-            <img src={thumbnail} alt={name} className="h-40 w-full rounded-lg object-cover" />
+        <div className="flex h-full flex-col gap-3 rounded-xl border border-sub2 bg-main p-6">
+            <img
+                src={thumbnail}
+                alt={name}
+                className="h-48 w-full shrink-0 rounded-lg object-cover"
+            />
 
             <h2 className="font-sans text-lg font-bold text-sub1">{name}</h2>
 
-            <p className="font-sans text-sm leading-normal font-normal text-sub2">{description}</p>
+            <p className="min-h-[2lh] font-sans text-base leading-normal font-normal text-sub2">
+                {description}
+            </p>
 
-            <div className="flex flex-wrap gap-2">
-                {techStack.map((tech, index) => (
-                    <span
-                        key={index}
-                        className="rounded-full bg-accent-soft px-2.5 py-1 font-sans text-xs font-bold text-sub1"
-                    >
-                        {tech}
-                    </span>
-                ))}
-            </div>
+            <div className="mt-auto flex items-center gap-3">
+                <div className="flex min-w-0 flex-1 flex-wrap gap-2">
+                    {techStack.map((tech, index) => (
+                        <span
+                            key={index}
+                            className="rounded-full bg-accent-soft px-2.5 py-1 font-sans text-sm font-bold text-sub1"
+                        >
+                            {tech}
+                        </span>
+                    ))}
+                </div>
 
-            {webLink && (
-                <div className="mt-auto">
+                {webLink && (
                     <a
                         href={webLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-[0.35rem] font-sans font-bold text-sub1 no-underline"
+                        className="inline-flex shrink-0 items-center gap-[0.35rem] font-sans text-sm font-bold text-sub1 no-underline"
                     >
                         View Link
                         <OpenInNewIcon />
                     </a>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     );
 };

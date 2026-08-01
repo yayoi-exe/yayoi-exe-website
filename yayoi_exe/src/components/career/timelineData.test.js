@@ -42,9 +42,9 @@ test('uses company/title for work entries and university/degree for education en
     expect(edu.description).toBe('Degree A');
 });
 
-test('formats the year range, using 現在 for the ongoing entry', () => {
+test('formats the year range, using Present for the ongoing entry', () => {
     const result = buildTimelineItems(fixture);
-    expect(result.find((item) => item.id === 3).year).toBe('2024 - 現在');
+    expect(result.find((item) => item.id === 3).year).toBe('2024 - Present');
     expect(result.find((item) => item.id === 1).year).toBe('2017 - 2022');
 });
 

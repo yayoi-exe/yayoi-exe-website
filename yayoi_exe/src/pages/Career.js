@@ -8,10 +8,10 @@ const Career = () => {
     const timelineItems = buildTimelineItems(educationData);
 
     return (
-        <div className="flex w-full grow items-center gap-[clamp(2rem,6vw,5rem)]">
-            <section className="max-w-[640px] flex-1 px-[clamp(0.5rem,2vw,1.5rem)]">
+        <div className="flex w-full grow">
+            <div className="grid flex-1 place-content-center justify-items-start">
                 <Timeline items={timelineItems} />
-            </section>
+            </div>
             <div className="flex flex-1 items-center justify-center">
                 <PhotoFrame />
             </div>
