@@ -20,7 +20,8 @@ const ProjectCard = ({ project }) => {
             <img
                 src={thumbnail}
                 alt={name}
-                className="h-48 w-full shrink-0 rounded-lg object-cover"
+                draggable={false}
+                className="h-48 w-full shrink-0 rounded-lg object-cover select-none [-webkit-user-drag:none]"
             />
 
             <h2 className="font-sans text-lg font-bold text-sub1">{name}</h2>

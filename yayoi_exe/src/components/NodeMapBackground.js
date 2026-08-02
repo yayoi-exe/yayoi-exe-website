@@ -26,9 +26,15 @@ const NodeMapBackground = () => {
         let height = 0;
 
         const resize = () => {
+            const parent = canvas.parentElement;
+            if (!parent) return;
+
             const dpr = Math.min(window.devicePixelRatio || 1, 2);
-            width = window.innerWidth;
-            height = window.innerHeight;
+            // 親（コンテンツ領域）に合わせる。window 全画面だとヘッダー下も毎フレーム再描画され帯がチカチカする
+            width = parent.clientWidth;
+            height = parent.clientHeight;
+            if (width === 0 || height === 0) return;
+
             canvas.width = Math.floor(width * dpr);
             canvas.height = Math.floor(height * dpr);
             canvas.style.width = `${width}px`;
@@ -57,14 +63,15 @@ const NodeMapBackground = () => {
         };
 
         const onMotionChange = () => start();
+        const observer = new ResizeObserver(() => resize());
+        if (canvas.parentElement) observer.observe(canvas.parentElement);
 
         start();
-        window.addEventListener('resize', resize);
         reduceMotion.addEventListener('change', onMotionChange);
 
         return () => {
             cancelAnimationFrame(rafId);
-            window.removeEventListener('resize', resize);
+            observer.disconnect();
             reduceMotion.removeEventListener('change', onMotionChange);
         };
     }, []);
@@ -72,7 +79,7 @@ const NodeMapBackground = () => {
     return (
         <canvas
             ref={canvasRef}
-            className="pointer-events-none fixed inset-0 z-0 block h-full w-full"
+            className="pointer-events-none absolute inset-0 z-0 block h-full w-full"
             aria-hidden="true"
         />
     );

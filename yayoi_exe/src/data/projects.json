@@ -4,7 +4,7 @@
         "name": "Portfolio Website",
         "description": "A personal portfolio website built with React and CSS.",
         "thumbnail": "/images/portfolio_web.jpg",
-        "techStack": ["React", "CSS", "JavaScript"],
+        "techStack": ["React", "CSS"],
         "webLink": "https://github.com/yayoi-exe/yayoi-exe-website/tree/development"
     },
     {
@@ -12,7 +12,7 @@
         "name": "Stealth Shield -Protect Your Virtual Privacy-",
         "description": "A VR project on virtual privacy, selected for IVRC 2024 Seed Stage.",
         "thumbnail": "/images/IVRC.jpg",
-        "techStack": ["Unity", "C#", "Python", "Node.js"],
+        "techStack": ["Unity", "VR", "AI API", "Python", "Node.js"],
         "webLink": "https://conference.vrsj.org/ac2024/program/doc/IVRC-12.pdf"
     },
     {
@@ -20,7 +20,15 @@
         "name": "The Malleable-Self Experience",
         "description": "An interactive experience awarded the ACM SIGGRAPH 2024 Audience Choice Award.",
         "thumbnail": "/images/SIGGRAPH.jpg",
-        "techStack": ["Unity", "C#", "Arduino"],
+        "techStack": ["Unity", "VR", "Haptic", "Arduino"],
         "webLink": "https://www.kmd.keio.ac.jp/ja/news/2024/08/%E3%80%90awards%E3%80%91siggraph-2024-emerging-technologies-awards.html"
+    },
+    {
+        "id": 4,
+        "name": "Mobility Support Service",
+        "description": "A mobility support system and usage data analysis, awarded Best Social Implementation Prize at the FY2021 Social Implementation Education Forum.",
+        "thumbnail": "/images/mobility_support.jpg",
+        "techStack": ["Vue.js", "Django", "Python", "PostgreSQL"],
+        "webLink": "https://www.tokyo-ct.ac.jp/news/20220325_01/"
     }
 ]

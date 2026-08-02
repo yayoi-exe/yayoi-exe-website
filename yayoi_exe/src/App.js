@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Header from './components/Header';
@@ -8,6 +8,8 @@ import Career from './pages/Career';
 import Projects from './pages/Projects';
 import { TAB_ORDER } from './routes';
 
+const PAGE_TRANSITION = { duration: 0.7, ease: [0.32, 0.72, 0, 1] };
+
 // 縦一枚帯: 上から Home → Career → Projects
 // slide > 0 進む: 旧は上へ抜け、新は下から
 // slide < 0 戻る: 旧は下へ流れ、新は上から
@@ -16,7 +18,9 @@ function getSlide(fromPath, toPath) {
     const from = TAB_ORDER.indexOf(fromPath);
     const to = TAB_ORDER.indexOf(toPath);
     if (from === -1 || to === -1) return 1;
-    return to - from;
+    // 距離は常に 1 画面分。index 差（Home↔Projects=2）のままだと 200% 移動になり、
+    // 途中で割り込まれると帯が噛み合わなく見える。
+    return Math.sign(to - from) || 1;
 }
 
 const pageVariants = {
@@ -28,55 +32,95 @@ const pageVariants = {
 function AnimatedRoutes() {
     const location = useLocation();
     const prevPathRef = useRef(location.pathname);
-    const [{ displayLocation, slide }, setRoute] = useState({
+    const isAnimatingRef = useRef(false);
+    const pendingLocationRef = useRef(null);
+    const transitionIdRef = useRef(0);
+    const [{ displayLocation, slide, transitionId }, setRoute] = useState({
         displayLocation: location,
         slide: 1,
+        transitionId: 0,
     });
 
-    useLayoutEffect(() => {
+    const commitRoute = useCallback((nextLocation) => {
         const prevPath = prevPathRef.current;
-        if (location.pathname === prevPath) return;
+        if (nextLocation.pathname === prevPath) return;
 
-        prevPathRef.current = location.pathname;
+        const nextId = transitionIdRef.current + 1;
+        transitionIdRef.current = nextId;
+        isAnimatingRef.current = true;
+        prevPathRef.current = nextLocation.pathname;
         setRoute({
-            displayLocation: location,
-            slide: getSlide(prevPath, location.pathname),
+            displayLocation: nextLocation,
+            slide: getSlide(prevPath, nextLocation.pathname),
+            transitionId: nextId,
         });
-    }, [location]);
+    }, []);
+
+    // 遷移アニメ完了後、連打で溜めた「最後の行き先」だけを反映する
+    const flushPendingRoute = useCallback(() => {
+        isAnimatingRef.current = false;
+        const pending = pendingLocationRef.current;
+        if (!pending) return;
+
+        pendingLocationRef.current = null;
+        if (pending.pathname === prevPathRef.current) return;
+        commitRoute(pending);
+    }, [commitRoute]);
+
+    useLayoutEffect(() => {
+        if (location.pathname === prevPathRef.current) return;
+
+        // アニメ中の追加ナビは表示を切り替えず、最新の location だけ保持
+        if (isAnimatingRef.current) {
+            pendingLocationRef.current = location;
+            return;
+        }
+
+        commitRoute(location);
+    }, [location, commitRoute]);
 
     return (
-        <div className="relative z-[1] min-h-0 flex-1 overflow-hidden">
-            <AnimatePresence mode="sync" custom={slide} initial={false}>
-                <motion.div
-                    key={displayLocation.key}
-                    className="absolute inset-0 flex flex-col overflow-x-hidden overflow-y-auto px-page-x py-page-y will-change-transform"
-                    custom={slide}
-                    variants={pageVariants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-                >
-                    <Routes location={displayLocation}>
-                        <Route path="/" element={<Main />} />
-                        <Route path="/career" element={<Career />} />
-                        <Route path="/projects" element={<Projects />} />
-                    </Routes>
-                </motion.div>
-            </AnimatePresence>
-        </div>
+        <AnimatePresence mode="sync" custom={slide} initial={false}>
+            <motion.div
+                // pathname を key にする。location.key だと往復のたびに別インスタンスになり、
+                // 退場中の旧ページと入場中の新ページが二重に残る。
+                key={displayLocation.pathname}
+                className="absolute inset-0 z-[1] flex flex-col overflow-x-hidden overflow-y-auto px-page-x py-page-y"
+                custom={slide}
+                variants={pageVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={PAGE_TRANSITION}
+                onAnimationComplete={(definition) => {
+                    // 古いページの complete が遅れて来ても、現行 transition 以外は無視
+                    if (definition !== 'center') return;
+                    if (transitionId !== transitionIdRef.current) return;
+                    flushPendingRoute();
+                }}
+            >
+                <Routes location={displayLocation}>
+                    <Route path="/" element={<Main />} />
+                    <Route path="/career" element={<Career />} />
+                    <Route path="/projects" element={<Projects />} />
+                </Routes>
+            </motion.div>
+        </AnimatePresence>
     );
 }
 
 function App() {
     return (
         <BrowserRouter>
-            <div className="relative flex h-screen w-screen flex-col overflow-hidden bg-main">
-                <NodeMapBackground />
-                <div className="relative z-[1] shrink-0">
+            <div className="relative flex h-dvh w-screen flex-col overflow-hidden bg-main">
+                {/* ヘッダー下に canvas を置かない（毎フレーム clearRect されると帯がチカチカする） */}
+                <div className="relative z-20 isolate shrink-0 bg-main">
                     <Header />
                 </div>
-                <AnimatedRoutes />
+                <div className="relative z-10 min-h-0 flex-1 overflow-hidden bg-main">
+                    <NodeMapBackground />
+                    <AnimatedRoutes />
+                </div>
             </div>
         </BrowserRouter>
     );
