@@ -1,12 +1,14 @@
-import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import React, { useCallback, useLayoutEffect, useRef, useState, forwardRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 import Header from './components/Header';
 import NodeMapBackground from './components/NodeMapBackground';
 import Main from './pages/Main';
 import Career from './pages/Career';
 import Projects from './pages/Projects';
 import { TAB_ORDER } from './routes';
+import { PageTransitionProvider } from './context/PageTransitionContext';
 
 const PAGE_TRANSITION = { duration: 0.7, ease: [0.32, 0.72, 0, 1] };
 
@@ -27,6 +29,49 @@ const pageVariants = {
     enter: (slide) => ({ y: `${slide * 100}%` }),
     center: { y: 0 },
     exit: (slide) => ({ y: `${-slide * 100}%` }),
+};
+
+// ページインスタンスごとに isPageReady を持つ。
+// AnimatePresence は直下の motion に ref が届く必要があるので forwardRef する。
+const TransitionPage = forwardRef(function TransitionPage(
+    { displayLocation, slide, transitionId, isInitialLoad, onEnterComplete },
+    ref
+) {
+    const [isPageReady, setIsPageReady] = useState(isInitialLoad);
+
+    return (
+        <motion.div
+            ref={ref}
+            className="absolute inset-0 z-[1] flex flex-col overflow-x-hidden overflow-y-auto px-page-x py-page-y"
+            custom={slide}
+            variants={pageVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={PAGE_TRANSITION}
+            onAnimationComplete={(definition) => {
+                if (definition !== 'center') return;
+                setIsPageReady(true);
+                onEnterComplete(transitionId);
+            }}
+        >
+            <PageTransitionProvider isPageReady={isPageReady}>
+                <Routes location={displayLocation}>
+                    <Route path="/" element={<Main />} />
+                    <Route path="/career" element={<Career />} />
+                    <Route path="/projects" element={<Projects />} />
+                </Routes>
+            </PageTransitionProvider>
+        </motion.div>
+    );
+});
+
+TransitionPage.propTypes = {
+    displayLocation: PropTypes.object.isRequired,
+    slide: PropTypes.number.isRequired,
+    transitionId: PropTypes.number.isRequired,
+    isInitialLoad: PropTypes.bool.isRequired,
+    onEnterComplete: PropTypes.func.isRequired,
 };
 
 function AnimatedRoutes() {
@@ -67,6 +112,15 @@ function AnimatedRoutes() {
         commitRoute(pending);
     }, [commitRoute]);
 
+    const handleEnterComplete = useCallback(
+        (completedId) => {
+            // 古いページの complete が遅れて来ても、現行 transition 以外は無視
+            if (completedId !== transitionIdRef.current) return;
+            flushPendingRoute();
+        },
+        [flushPendingRoute]
+    );
+
     useLayoutEffect(() => {
         if (location.pathname === prevPathRef.current) return;
 
@@ -81,30 +135,14 @@ function AnimatedRoutes() {
 
     return (
         <AnimatePresence mode="sync" custom={slide} initial={false}>
-            <motion.div
-                // pathname を key にする。location.key だと往復のたびに別インスタンスになり、
-                // 退場中の旧ページと入場中の新ページが二重に残る。
+            <TransitionPage
                 key={displayLocation.pathname}
-                className="absolute inset-0 z-[1] flex flex-col overflow-x-hidden overflow-y-auto px-page-x py-page-y"
-                custom={slide}
-                variants={pageVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={PAGE_TRANSITION}
-                onAnimationComplete={(definition) => {
-                    // 古いページの complete が遅れて来ても、現行 transition 以外は無視
-                    if (definition !== 'center') return;
-                    if (transitionId !== transitionIdRef.current) return;
-                    flushPendingRoute();
-                }}
-            >
-                <Routes location={displayLocation}>
-                    <Route path="/" element={<Main />} />
-                    <Route path="/career" element={<Career />} />
-                    <Route path="/projects" element={<Projects />} />
-                </Routes>
-            </motion.div>
+                displayLocation={displayLocation}
+                slide={slide}
+                transitionId={transitionId}
+                isInitialLoad={transitionId === 0}
+                onEnterComplete={handleEnterComplete}
+            />
         </AnimatePresence>
     );
 }

@@ -7,7 +7,7 @@ const AnimatedTitle = ({ phrases }) => {
 
     return (
         <p
-            className="inline-block h-[1.4em] overflow-hidden align-top font-sans text-xl leading-[1.4] font-normal whitespace-pre text-sub2"
+            className="inline-block h-[1.4em] overflow-hidden align-top font-sans text-[3rem] leading-[1.4] font-normal whitespace-pre text-sub2"
             style={{ boxSizing: 'content-box' }}
             ref={contentRef}
         ></p>

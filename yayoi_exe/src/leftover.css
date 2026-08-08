@@ -1,16 +1,4 @@
 @layer components {
-    /* Vertical spine behind timeline dots — hard to express as utilities */
-    .timeline-list::before {
-        content: '';
-        position: absolute;
-        left: 20px;
-        top: calc(14px + clamp(1rem, 4vh, 3rem));
-        bottom: calc(14px + clamp(1rem, 4vh, 3rem));
-        width: 2px;
-        background-color: var(--color-sub2);
-        opacity: 0.5;
-    }
-
     /* GSAP injects these class names on scramble spans */
     .home-tagline-char {
         display: inline-block;

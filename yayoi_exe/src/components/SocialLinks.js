@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import { EmailIcon, GithubIcon, LinkedinIcon } from './icons';
 
 // TODO: replace with the real address later
@@ -21,7 +22,7 @@ const SOCIAL_LINKS = [
 const linkClassName =
     'inline-flex text-sub1 transition-transform duration-200 hover:-translate-y-1';
 
-const SocialLinks = () => {
+const SocialLinks = ({ className = '' }) => {
     const [copied, setCopied] = useState(false);
     const timeoutRef = useRef(null);
 
@@ -39,7 +40,7 @@ const SocialLinks = () => {
     };
 
     return (
-        <div className="flex items-center gap-4">
+        <div className={`flex items-center gap-8 ${className}`.trim()}>
             {SOCIAL_LINKS.map(({ href, label, Icon, external }) => (
                 <a
                     key={label}
@@ -71,6 +72,10 @@ const SocialLinks = () => {
             </div>
         </div>
     );
+};
+
+SocialLinks.propTypes = {
+    className: PropTypes.string,
 };
 
 export default SocialLinks;

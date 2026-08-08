@@ -1,14 +1,63 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { motion, useReducedMotion } from 'framer-motion';
+import { usePageTransition } from '../../context/PageTransitionContext';
 
-// ページ全体の縦スライド（App.js の 0.7s）が入場演出なので、
-// ここでは個別の opacity アニメを持たない。持たせるとマウント直後に
-// フェードが始まり、スライド途中／高速離脱時に「描画だけ先に進む」ように見える。
+const EASE = [0.32, 0.72, 0, 1];
+
+const listVariants = {
+    hidden: {},
+    visible: {
+        transition: {
+            staggerChildren: 0.1,
+            staggerDirection: -1,
+        },
+    },
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.35, ease: EASE },
+    },
+};
+
+const reducedItemVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0 } },
+};
+
+// isPageReady は TransitionPage インスタンス局所。退場中の旧ページは ready=true のままなので
+// グローバル latch なしで「退場時に消えない／再入場で毎回再生」が両立する。
 const Timeline = ({ items }) => {
+    const { isPageReady } = usePageTransition();
+    const prefersReducedMotion = useReducedMotion();
+
+    const itemVariant = prefersReducedMotion ? reducedItemVariants : itemVariants;
+    const listVariant = prefersReducedMotion ? { hidden: {}, visible: {} } : listVariants;
+
     return (
-        <ol className="timeline-list relative flex list-none flex-col gap-[clamp(3.5rem,9vh,6rem)] py-[clamp(1rem,4vh,3rem)] pl-2.5">
+        <motion.ol
+            className="relative flex list-none flex-col gap-[clamp(3.5rem,9vh,6rem)] py-[clamp(1rem,4vh,3rem)] pl-2.5"
+            variants={listVariant}
+            initial="hidden"
+            animate={isPageReady ? 'visible' : 'hidden'}
+        >
+            <motion.span
+                aria-hidden="true"
+                className="pointer-events-none absolute top-[calc(14px+clamp(1rem,4vh,3rem))] bottom-[calc(14px+clamp(1rem,4vh,3rem))] left-[19px] z-0 w-0.5 origin-bottom bg-sub2/50"
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: isPageReady ? 1 : 0 }}
+                transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.55, ease: EASE }}
+            />
             {items.map((item) => (
-                <li key={item.id} className="relative z-[1] flex items-start gap-8">
+                <motion.li
+                    key={item.id}
+                    className="relative z-[1] flex items-start gap-8"
+                    variants={itemVariant}
+                >
                     <span
                         className={`mt-1 h-5 w-5 shrink-0 rounded-full ${
                             item.isCurrent ? 'bg-accent' : 'bg-sub2'
@@ -24,9 +73,9 @@ const Timeline = ({ items }) => {
                             {item.description}
                         </p>
                     </div>
-                </li>
+                </motion.li>
             ))}
-        </ol>
+        </motion.ol>
     );
 };
 

@@ -39,7 +39,7 @@ const Header = () => {
     const tabs = useHeaderNav();
 
     return (
-        <header className="relative isolate flex flex-nowrap items-center justify-start overflow-hidden bg-main py-2 pr-4 pl-7 text-sub1">
+        <header className="relative isolate flex flex-nowrap items-center justify-start overflow-hidden bg-main py-3 pr-4 pl-7 text-sub1">
             <div className="relative z-[1] shrink-0 text-xl font-bold whitespace-normal text-sub1">
                 Yayoi-exe
             </div>
